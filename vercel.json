@@ -1,0 +1,6 @@
+{
+  "framework": null,
+  "installCommand": "npm install",
+  "buildCommand": "npm run build && mkdir -p public && cp Pruebas_Intruso_U4.html public/index.html",
+  "outputDirectory": "public"
+}

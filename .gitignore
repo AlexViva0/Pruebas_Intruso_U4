@@ -2,3 +2,5 @@ node_modules/
 .vercel
 .DS_Store
 mockups/out/s[1-4]-*.png
+public/
+.env*
