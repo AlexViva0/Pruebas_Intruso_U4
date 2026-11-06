@@ -28,7 +28,9 @@ Inicio / Fin · **N** notas del orador · **F** pantalla completa · **X** efect
 - [x] Motor, estilo y transiciones · 01 Portada · 02 Temario (con pasos por clase)
 - [x] **Clase 1 · Repaso exprés** · 03 Pentest y marco legal · 04 Cajas negra/gris/blanca · 05 Metodologías y fases · **A1** Repaso relámpago (V/F)
 - [x] **Clase 1 · Herramientas de software** · 07 Kali · 08 Nmap esencial · 09 Metasploit · 10 Burp Suite · 11 Wireshark · **A2** Memorama · **A3** ¿Qué hace cada herramienta? (arrastrar) · **A4** Quiz (14–18)
-- [ ] Clase 2 (SET, escáneres de vulnerabilidades; A5–A10) y Clase 3 (síntesis, conclusiones; A11–A13).
+- [x] **Clase 2 · SET** · 19–22 teoría · **A5** ¿Es phishing? · **A6** Detective del correo · **A7** Antes de lanzar la campaña
+- [x] **Clase 2 · Escáneres** · 26 intro · 27 Nessus · 28 OpenVAS · 29 ZAP · 30 Nikto · 31 CVE/CVSS (repaso) · 32 comparativa · **A8** Elige tu escáner · **A9** ¿Quién lo encontró? · **A10** Quiz (35–39)
+- [ ] Clase 3 (síntesis, conclusiones; A11–A13).
 
 Animaciones: formas **redondas** y propias (esferas para caja negra/gris/blanca, órbita de Kali, pared y sonda para el pentest); no se reutilizan las del deck de otro equipo.
 

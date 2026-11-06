@@ -16,8 +16,8 @@ function reveal(s, on, { gsap, fx, instant }) {
     }
   });
 }
-for (let i = 1; i <= 5; i++) {
-  defineSlide('quiz1-' + i, {
+for (const id of [1, 2, 3, 4, 5].flatMap(i => ['quiz1-' + i, 'quiz2-' + i])) {
+  defineSlide(id, {
     enter(s, api) {
       s.querySelectorAll('.qc').forEach(c => api.gsap.set(c, { autoAlpha: 0, scale: 0 }));
       if (api.step >= 1) reveal(s, true, { gsap: api.gsap, fx: api.fx, instant: true });

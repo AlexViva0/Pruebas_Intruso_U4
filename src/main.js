@@ -12,6 +12,7 @@ import './fx/b2-wireshark.js';
 import './fx/a2.js';
 import './fx/a3.js';
 import './fx/quiz.js';
+import './fx/c2.js';
 import { init } from './engine.js';
 import { mountArt, mountOrbs, mountB2 } from './art.js';
 
