@@ -8,8 +8,8 @@ import './fx/b1-fases.js';
 import './fx/a1.js';
 import './fx/a2.js';
 import { init } from './engine.js';
-import { mountArt, mountCubes } from './art.js';
+import { mountArt, mountOrbs } from './art.js';
 
 mountArt();
-mountCubes();
+mountOrbs();
 init();

@@ -17,9 +17,9 @@ function paint(s, n, { gsap, fx, instant }) {
   const p = n ? PHASES[n - 1] : null, nn = s.querySelector('.fz-nn'), t = s.querySelector('.fz-t'), d = s.querySelector('.fz-d'), tools = s.querySelector('.fz-tools'), e = s.querySelector('.fz-ed');
   const set = () => {
     nn.textContent = n || '0'; t.textContent = p ? p.name : 'Un pentest, cinco fases';
-    d.textContent = p ? p.d : 'Cada fase produce algo que alimenta a la siguiente.';
+    d.textContent = p ? p.d : 'Del reconocimiento al informe.';
     tools.innerHTML = (p ? p.tools : ['Nmap', 'Nessus', 'Metasploit', 'Burp', 'Wireshark', 'SET']).map(x => `<span class="chip">${x}</span>`).join('');
-    e.textContent = p ? p.e : 'Pulsa → para recorrer las fases, de la información al informe.';
+    e.textContent = p ? p.e : 'Pulsa → para recorrer las fases.';
   };
   const els = [nn, t, d, tools, e];
   if (quick) set();

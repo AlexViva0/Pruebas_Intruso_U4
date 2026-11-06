@@ -2,11 +2,11 @@ import { defineSlide } from '../engine.js';
 import { maskTitle } from './util.js';
 
 const INFO = [
-  ['ELIGE UNA', 'Seguir un estándar da <b>consistencia y trazabilidad</b>', 'Pulsa → para ver qué evalúa y cuándo conviene cada metodología.'],
-  ['OWASP WSTG', 'Evalúa <b>autenticación, control de acceso</b> y el OWASP Top 10', 'Es la guía de OWASP para <b>aplicaciones web y APIs</b>. Conviene cuando el objetivo es un sitio o una app.'],
-  ['PTES', 'Define las <b>fases formales</b> de una prueba', 'Pre-evaluación · recolección de información · modelado de amenazas · explotación · post-explotación · reporte. Conviene para llevar <b>todo el proceso</b> con trazabilidad.'],
-  ['OSSTMM', 'Una <b>línea base</b> de pruebas, sin importar el entorno', 'Metodología <b>abierta</b> (Open Source). Conviene cuando se quiere un mismo mínimo de pruebas para cualquier cliente.'],
-  ['NIST SP 800-115', 'Guía técnica para <b>planear y ejecutar</b> las pruebas', 'La publica el NIST (EE. UU.) para pruebas de seguridad de la información. Conviene como referencia técnica y de planeación.']
+  ['ELIGE UNA', 'Seguir un estándar da <b>consistencia y trazabilidad</b>', 'Pulsa → para ver qué define cada metodología.'],
+  ['OWASP WSTG', 'Evalúa <b>autenticación, control de acceso</b> y el OWASP Top 10', 'Guía de OWASP para evaluar <b>aplicaciones web y APIs</b>.'],
+  ['PTES', 'Define las <b>fases formales</b> de una prueba', 'Pre-evaluación · recolección de información · modelado de amenazas · explotación · post-explotación · reporte. Da <b>consistencia y trazabilidad</b> a la prueba.'],
+  ['OSSTMM', 'Una <b>línea base</b> de pruebas, sin importar el entorno', 'Open Source Security Testing Methodology Manual: una metodología <b>abierta</b>.'],
+  ['NIST SP 800-115', 'Guía técnica para <b>planear y ejecutar</b> las pruebas', 'Guía técnica del NIST (EE. UU.) para la planeación y ejecución de pruebas de seguridad de la información.']
 ];
 
 function paint(s, n, { gsap, fx, instant }) {

@@ -17,7 +17,7 @@ function build(s) {
   const row = s.querySelector('.row5');
   row.innerHTML = SHUFFLED.map(n => {
     const p = PHASES[n - 1];
-    return `<div class="card ph" data-n="${n}" data-anim="pop"><div class="ph-num mono">?</div><div class="ph-name">${p.name}</div>${ICON[n]}<div class="ph-e"><span class="mono">ENTREGABLE</span>${p.e}</div></div>`;
+    return `<div class="card ph" data-n="${n}" data-anim="pop"><div class="ph-num mono">?</div><div class="ph-name">${p.name}</div>${ICON[n]}<div class="ph-e"><span class="mono">OBJETIVO</span>${p.e}</div></div>`;
   }).join('');
   const cards = () => [...row.querySelectorAll('.ph')];
   let sel = null, locked = false, calls = [];
@@ -51,7 +51,7 @@ function build(s) {
     unreveal() {
       if (!locked) return; calls.forEach(c => c.kill()); calls = []; locked = false; s.classList.remove('revealed');
       cards().forEach((c, i) => { c.classList.remove('ok', 'bad'); c.querySelector('.ph-num').textContent = '?'; });
-      status('Aún no lo has verificado. Cuando el grupo termine, pulsa → para ver el orden correcto y sus entregables.');
+      status('Aún no lo has verificado. Cuando el grupo termine, pulsa → para ver el orden correcto y el objetivo de cada fase.');
     }
   };
 }

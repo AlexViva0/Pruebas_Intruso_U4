@@ -72,19 +72,28 @@ export function playScan(svg, { gsap, animate, fx, delay = 0, own }) {
   own(tl);
 }
 
-// Cubos isométricos (caja negra / gris / blanca) en el estilo Plano.
-export function cubeArt(kind) {
-  const N = '#1a2352';
-  const C = { negra: ['#3a4690', '#1a2352', '#10163a'], gris: ['#e2e7fa', '#aab4de', '#8f9bd0'], blanca: ['#ffffff', '#f2ecf0', '#fff6f1'] }[kind];
-  const op = kind === 'gris' ? ' fill-opacity=".88"' : '';
-  const faces = `<polygon points="150,60 210,95 150,130 90,95" fill="${C[0]}"${op}/><polygon points="90,95 150,130 150,200 90,165" fill="${C[1]}"${op}/><polygon points="150,130 210,95 210,165 150,200" fill="${C[2]}"${op}/>`;
-  const edges = `<g fill="none" stroke="${N}" stroke-width="5" stroke-linejoin="round"><polygon points="150,60 210,95 210,165 150,200 90,165 90,95"/><polyline points="90,95 150,130 210,95"/><line x1="150" y1="130" x2="150" y2="200"/></g>`;
-  let mark = '';
-  if (kind === 'negra') mark = `<g transform="translate(150,130) skewY(-30)"><text class="q" x="30" y="54" text-anchor="middle" font-size="58" font-weight="700" fill="#ffd54a" font-family="Space Grotesk">?</text></g>`;
-  if (kind === 'gris') mark = `<g transform="translate(90,95) skewY(30)"><g class="ck"><circle cx="18" cy="38" r="9" fill="#ffd54a" stroke="${N}" stroke-width="3.5"/><line x1="27" y1="38" x2="50" y2="38" stroke="${N}" stroke-width="5" stroke-linecap="round"/><line x1="42" y1="38" x2="42" y2="46" stroke="${N}" stroke-width="4" stroke-linecap="round"/><line x1="49" y1="38" x2="49" y2="44" stroke="${N}" stroke-width="4" stroke-linecap="round"/></g></g>`;
-  if (kind === 'blanca') mark = `<g transform="translate(150,130) skewY(-30)"><rect class="cl" x="8" y="16" width="34" height="6" rx="3" fill="#4a6ce7"/><rect class="cl" x="14" y="30" width="38" height="6" rx="3" fill="${N}"/><rect class="cl" x="14" y="44" width="24" height="6" rx="3" fill="#ffd54a"/><rect class="cl" x="8" y="58" width="42" height="6" rx="3" fill="#4a6ce7"/></g>`;
-  return `<svg class="cube-svg" viewBox="55 50 190 190" aria-hidden="true"><ellipse class="shadow" cx="150" cy="226" rx="70" ry="12" fill="${N}" opacity=".18"/><g class="cube">${faces}${mark}${edges}</g></svg>`;
+// Esferas «cuánto se ve del interior» (caja negra / gris / blanca): redondas, con red interna y una sonda que orbita.
+export const ORB_NODES = [[110, 92], [172, 86], [130, 132], [190, 128], [150, 160], [98, 142]];
+export const ORB_EDGES = [[0, 1], [0, 2], [1, 3], [2, 3], [2, 4], [3, 4], [2, 5], [5, 4]];
+export function orbArt(kind) {
+  const N = '#1a2352', B = '#4a6ce7', Y = '#ffd54a';
+  const body = { negra: `fill="${N}"`, gris: 'fill="#aab4de" fill-opacity=".62"', blanca: 'fill="#ffffff"' }[kind];
+  const edges = ORB_EDGES.map(([a, b]) => `<line class="oe" x1="${ORB_NODES[a][0]}" y1="${ORB_NODES[a][1]}" x2="${ORB_NODES[b][0]}" y2="${ORB_NODES[b][1]}"/>`).join('');
+  const nodes = ORB_NODES.map(([x, y], i) => `<circle class="on" data-i="${i}" cx="${x}" cy="${y}" r="9"/>`).join('');
+  const inner = kind === 'negra' ? '' : `<g class="inner inner-${kind}"><g class="edges" stroke="${N}" stroke-width="3.5" stroke-linecap="round">${edges}</g><g class="nodes" stroke="${N}" stroke-width="3.5">${nodes}</g></g>`;
+  const shine = kind === 'negra' ? `<ellipse cx="116" cy="74" rx="30" ry="15" transform="rotate(-32 116 74)" fill="#fff" opacity=".2"/>`
+    : `<ellipse cx="116" cy="72" rx="30" ry="14" transform="rotate(-32 116 72)" fill="#fff" opacity="${kind === 'gris' ? '.55' : '.9'}"/>`;
+  return `<svg class="orb-svg" viewBox="0 0 300 250" aria-hidden="true">
+    <ellipse class="shadow" cx="150" cy="232" rx="64" ry="11" fill="${N}" opacity=".18"/>
+    <ellipse class="orbit" cx="150" cy="118" rx="128" ry="36" transform="rotate(-18 150 118)" fill="none" stroke="${N}" stroke-opacity=".35" stroke-width="3" stroke-dasharray="4 9" stroke-linecap="round"/>
+    <g class="orb">
+      <circle class="sph" cx="150" cy="118" r="88" ${body} stroke="${N}" stroke-width="6"/>
+      ${inner}${shine}
+      <circle class="pulse" cx="150" cy="118" r="88" fill="none" stroke="${Y}" stroke-width="5" opacity="0"/>
+    </g>
+    <circle class="probe" cx="150" cy="118" r="10" fill="${Y}" stroke="${N}" stroke-width="4"/>
+  </svg>`;
 }
-export function mountCubes() {
-  document.querySelectorAll('[data-art^="cube-"]').forEach(n => { n.innerHTML = cubeArt(n.dataset.art.slice(5)); });
+export function mountOrbs() {
+  document.querySelectorAll('[data-art^="orb-"]').forEach(n => { n.innerHTML = orbArt(n.dataset.art.slice(4)); });
 }

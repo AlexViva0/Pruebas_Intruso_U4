@@ -30,4 +30,4 @@ Inicio / Fin · **N** notas del orador · **F** pantalla completa · **X** efect
 - [ ] Bloques 2–5 (teoría y actividades A3–A10), según `Unidad 4 - Pruebas de Intruso - Investigación Ampliada`.
 
 Actividades: la etiqueta amarilla muestra el código (A1…); **T** inicia/pausa el cronómetro (`data-time`); **→** revela la respuesta.
-Los «entregables» de cada fase (`src/fx/phases.js`) son una propuesta del equipo, no vienen del documento.
+**Regla del proyecto:** todo el contenido sale de la investigación (`Unidad 4 - Pruebas de Intruso - Investigacion Ampliada`); nada de fuera.
