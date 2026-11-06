@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Mockups · Pruebas de intruso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#222;display:flex;flex-direction:column;gap:40px;align-items:center;padding:40px}
+.slide{position:relative;width:1920px;height:1080px;overflow:hidden;flex:none}
+.abs{position:absolute}
+img{display:block}
+
+/* ============ ESTILO 1 · ESCUDO (oscuro, vidrio y brillo) ============ */
+.s1{font-family:'Sora',sans-serif;color:#fff;background:radial-gradient(1200px 900px at 78% 38%,#2d3889 0%,#12154a 48%,#070a2b 100%)}
+.s1::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(119,145,209,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(119,145,209,.10) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(900px 700px at 70% 45%,#000 20%,transparent 75%)}
+.s1 .eyebrow{font:700 24px 'JetBrains Mono';letter-spacing:.22em;color:#7bb8ff}
+.s1 .inst{font:600 20px 'JetBrains Mono';letter-spacing:.14em;color:#9fb3e8}
+.s1 h1{font-weight:800;font-size:128px;line-height:1.0;letter-spacing:-.03em;background:linear-gradient(180deg,#fff 30%,#8fc4ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.s1 .sub{font-size:30px;line-height:1.4;color:#c6d4f7;font-weight:400}
+.s1 .meta{font-size:28px;color:#e6eeff}.s1 .meta b{color:#7bb8ff;font-weight:600}
+.s1 .glass{background:rgba(255,255,255,.07);border:1px solid rgba(143,196,255,.35);border-radius:22px;backdrop-filter:blur(6px)}
+.s1 .team{font-size:25px;line-height:1.62;color:#eaf1ff}.s1 .team i{font:600 23px 'JetBrains Mono';color:#7bb8ff;font-style:normal;margin-right:14px}
+.s1 .art{border-radius:40px;box-shadow:0 0 0 1px rgba(143,196,255,.4),0 0 110px rgba(80,160,255,.55),0 40px 90px rgba(0,0,0,.5)}
+
+/* ============ ESTILO 2 · VIOLETA (vivo, redondeado, acento menta) ============ */
+.s2{font-family:'Plus Jakarta Sans',sans-serif;color:#fff;background:linear-gradient(135deg,#2d0a7a 0%,#4a14c9 55%,#6a35f0 100%)}
+.s2 .blob{position:absolute;border-radius:50%;filter:blur(2px)}
+.s2 .eyebrow{display:inline-block;background:#43d9c0;color:#1d0a55;font-weight:800;font-size:26px;letter-spacing:.08em;padding:10px 26px;border-radius:999px}
+.s2 .inst{font-weight:700;font-size:21px;letter-spacing:.12em;color:#cfc3ff}
+.s2 h1{font-weight:800;font-size:132px;line-height:.98;letter-spacing:-.035em}
+.s2 h1 em{font-style:normal;color:#43d9c0}
+.s2 .sub{font-size:30px;line-height:1.4;color:#e3dcff;font-weight:500}
+.s2 .meta{font-size:28px;color:#fff;font-weight:500}.s2 .meta b{color:#43d9c0;font-weight:800}
+.s2 .chip{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,.14);border-radius:999px;padding:9px 26px 9px 10px;font-size:24px;font-weight:600;white-space:nowrap}
+.s2 .chip i{font-style:normal;background:#fff;color:#4a14c9;border-radius:999px;padding:6px 14px;font-weight:800;font-size:20px}
+.s2 .art{border-radius:56px;box-shadow:0 0 0 10px rgba(255,255,255,.18),0 50px 90px rgba(10,0,50,.55)}
+
+/* ============ ESTILO 3 · CARPETA (claro, aireado, cobalto) ============ */
+.s3{font-family:'Manrope',sans-serif;color:#0e2a66;background:linear-gradient(160deg,#f4f8ff 0%,#dbe8ff 55%,#bcd2f8 100%)}
+.s3::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(91,124,214,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(91,124,214,.12) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(90deg,transparent 10%,#000 60%)}
+.s3 .eyebrow{font:800 24px 'Manrope';letter-spacing:.18em;color:#2f6bff}
+.s3 .inst{font:700 20px 'Manrope';letter-spacing:.12em;color:#5b7cd6}
+.s3 h1{font-weight:800;font-size:128px;line-height:1.0;letter-spacing:-.035em;color:#0e2a66}
+.s3 h1 em{font-style:normal;color:#2f6bff}
+.s3 .sub{font-size:29px;line-height:1.45;color:#3c5590;font-weight:500}
+.s3 .meta{font-size:28px;color:#0e2a66;font-weight:600}.s3 .meta b{color:#2f6bff;font-weight:800}
+.s3 .card{background:#fff;border-radius:26px;box-shadow:0 18px 50px rgba(47,107,255,.18)}
+.s3 .team{font-size:25px;line-height:1.62;color:#0e2a66;font-weight:600}.s3 .team i{font-style:normal;font-weight:800;color:#2f6bff;margin-right:14px;font-size:23px}
+.s3 .art{border-radius:44px;box-shadow:0 40px 80px rgba(47,107,255,.35)}
+.s3 .pdf{background:#e5484d;color:#fff;font-weight:800;font-size:20px;padding:6px 16px;border-radius:10px;letter-spacing:.06em}
+
+/* ============ ESTILO 4 · PLANO (editorial, azul real, contornos gruesos) ============ */
+.s4{font-family:'Space Grotesk',sans-serif;color:#f2ecf3;background:#4a6ce7}
+.s4 .eyebrow{display:inline-block;background:#ffd54a;color:#1a2352;font-weight:700;font-size:26px;letter-spacing:.1em;padding:10px 24px;border:4px solid #1a2352;box-shadow:6px 6px 0 #1a2352}
+.s4 .inst{font-weight:500;font-size:22px;letter-spacing:.1em;color:#dfe5ff}
+.s4 h1{font-weight:700;font-size:140px;line-height:.95;letter-spacing:-.04em;color:#fff6f1}
+.s4 h1 em{font-style:normal;color:#1a2352;background:#ffd54a;padding:0 18px;display:inline-block;transform:rotate(-1.5deg)}
+.s4 .sub{font-size:31px;line-height:1.4;color:#eef0ff;font-weight:400}
+.s4 .meta{font-size:29px;color:#fff6f1}.s4 .meta b{color:#ffd54a;font-weight:700}
+.s4 .card{background:#fff6f1;color:#1a2352;border:4px solid #1a2352;box-shadow:10px 10px 0 #1a2352;border-radius:6px}
+.s4 .team{font-size:26px;line-height:1.62;color:#1a2352;font-weight:500}.s4 .team i{font-style:normal;font-weight:700;color:#4a6ce7;margin-right:14px;font-size:24px}
+.s4 .art{border:4px solid #1a2352;border-radius:6px;box-shadow:14px 14px 0 #1a2352}
+
+/* ---------- temario ---------- */
+.tt{font-weight:800;letter-spacing:-.03em}
+.tag{display:inline-block;font-size:20px;font-weight:600;padding:6px 14px;border-radius:999px;margin:0 8px 8px 0;white-space:nowrap}
+</style></head><body>
+
+<!-- ============================ ESTILO 1 · PORTADA ============================ -->
+<div class="slide s1" id="s1-portada">
+  <div class="abs inst" style="left:112px;top:70px">TECNOLÓGICO NACIONAL DE MÉXICO · INSTITUTO TECNOLÓGICO</div>
+  <div class="abs eyebrow" style="left:112px;top:200px">UNIDAD 4</div>
+  <h1 class="abs" style="left:108px;top:250px;width:1000px">Pruebas<br>de intruso</h1>
+  <p class="abs sub" style="left:112px;top:560px;width:880px">Herramientas de software · Social Engineering Toolkit · Herramientas para encontrar vulnerabilidades</p>
+  <div class="abs meta" style="left:112px;top:722px;line-height:1.7"><b>Materia:</b> Lenguajes de Interfaz<br><b>Docente:</b> [nombre del docente]</div>
+  <div class="abs glass team" style="left:112px;top:842px;width:940px;height:184px;padding:20px 30px">
+    <div style="font:700 20px 'JetBrains Mono';letter-spacing:.18em;color:#7bb8ff;margin-bottom:4px">INTEGRANTES</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;column-gap:24px;font-size:20px;line-height:1.5;white-space:nowrap"><span><i style="font-size:18px">23620227</i>Abelardo Ortiz Ortiz</span><span><i style="font-size:18px">21620008</i>Ricardo Martínez Santos</span><span><i style="font-size:18px">22620083</i>Adriana Hernandez Martinez</span><span><i style="font-size:19px">23620209</i>Jazlynn Barrios Velasco</span><span><i style="font-size:19px">21620140</i>Karen García García</span></div>
+  </div>
+  <img class="abs art" src="../assets/estilo1-escudo.png" style="right:120px;top:190px;width:720px;height:700px;object-fit:cover">
+</div>
+
+<!-- ============================ ESTILO 1 · TEMARIO ============================ -->
+<div class="slide s1" id="s1-temario">
+  <div class="abs eyebrow" style="left:112px;top:78px">RUTA DE LAS 3 CLASES</div>
+  <h1 class="abs" style="left:108px;top:122px;font-size:104px">Temario</h1>
+  <div class="abs" style="left:112px;top:340px;width:1696px;height:3px;background:linear-gradient(90deg,#5cb0ff,#7791d1,transparent);box-shadow:0 0 18px #5cb0ff"></div>
+  <div class="abs" style="left:112px;top:380px;width:1696px;display:grid;grid-template-columns:repeat(5,1fr);gap:22px">
+    <div class="glass" style="padding:28px 26px;height:520px;position:relative"><div style="font:800 84px 'Sora';color:#7bb8ff;text-shadow:0 0 28px rgba(92,176,255,.8)">01</div><div style="font-size:31px;font-weight:700;line-height:1.15;margin:8px 0 18px">Fundamentos y marco</div><div style="color:#b9c9f0;font-size:22px;line-height:1.5">Pentest · tipos · metodologías · fases · marco legal</div><div class="abs" style="left:26px;bottom:26px;font:700 19px 'JetBrains Mono';color:#7bb8ff;border:1px solid rgba(143,196,255,.5);border-radius:999px;padding:7px 16px">CLASE 1</div></div>
+    <div class="glass" style="padding:28px 26px;height:520px;position:relative"><div style="font:800 84px 'Sora';color:#7bb8ff;text-shadow:0 0 28px rgba(92,176,255,.8)">02</div><div style="font-size:31px;font-weight:700;line-height:1.15;margin:8px 0 18px">Herramientas de software</div><div style="color:#b9c9f0;font-size:22px;line-height:1.5">Kali · Nmap · Metasploit · Burp Suite · Wireshark</div><div class="abs" style="left:26px;bottom:26px;font:700 19px 'JetBrains Mono';color:#7bb8ff;border:1px solid rgba(143,196,255,.5);border-radius:999px;padding:7px 16px">CLASE 1</div></div>
+    <div class="glass" style="padding:28px 26px;height:520px;position:relative"><div style="font:800 84px 'Sora';color:#7bb8ff;text-shadow:0 0 28px rgba(92,176,255,.8)">03</div><div style="font-size:31px;font-weight:700;line-height:1.15;margin:8px 0 18px">Social Engineering Toolkit</div><div style="color:#b9c9f0;font-size:22px;line-height:1.5">SET · phishing · concienciación · ética y ley</div><div class="abs" style="left:26px;bottom:26px;font:700 19px 'JetBrains Mono';color:#7bb8ff;border:1px solid rgba(143,196,255,.5);border-radius:999px;padding:7px 16px">CLASE 2</div></div>
+    <div class="glass" style="padding:28px 26px;height:520px;position:relative"><div style="font:800 84px 'Sora';color:#7bb8ff;text-shadow:0 0 28px rgba(92,176,255,.8)">04</div><div style="font-size:31px;font-weight:700;line-height:1.15;margin:8px 0 18px">Encontrar vulnerabilidades</div><div style="color:#b9c9f0;font-size:22px;line-height:1.5">Nessus · OpenVAS · ZAP · Nikto · CVE y CVSS</div><div class="abs" style="left:26px;bottom:26px;font:700 19px 'JetBrains Mono';color:#7bb8ff;border:1px solid rgba(143,196,255,.5);border-radius:999px;padding:7px 16px">CLASE 2</div></div>
+    <div class="glass" style="padding:28px 26px;height:520px;position:relative"><div style="font:800 84px 'Sora';color:#7bb8ff;text-shadow:0 0 28px rgba(92,176,255,.8)">05</div><div style="font-size:31px;font-weight:700;line-height:1.15;margin:8px 0 18px">Síntesis y conclusiones</div><div style="color:#b9c9f0;font-size:22px;line-height:1.5">Flujo por fase · comparativa · quiz final</div><div class="abs" style="left:26px;bottom:26px;font:700 19px 'JetBrains Mono';color:#7bb8ff;border:1px solid rgba(143,196,255,.5);border-radius:999px;padding:7px 16px">CLASE 3</div></div>
+  </div>
+  <div class="abs" style="left:112px;top:960px;font:600 22px 'JetBrains Mono';letter-spacing:.1em;color:#9fb3e8">3 CLASES · 2 H · ACTIVIDADES CON FIRMA (A1–A10)</div>
+  <img class="abs" src="../assets/estilo1-escudo.png" style="right:112px;top:70px;width:230px;height:230px;object-fit:cover;border-radius:30px;box-shadow:0 0 60px rgba(80,160,255,.5)">
+</div>
+
+<!-- ============================ ESTILO 2 · PORTADA ============================ -->
+<div class="slide s2" id="s2-portada">
+  <div class="blob" style="width:900px;height:900px;right:-260px;top:-300px;background:radial-gradient(circle,#8a5cff 0%,rgba(138,92,255,0) 70%)"></div>
+  <div class="blob" style="width:520px;height:520px;left:-160px;bottom:-200px;background:radial-gradient(circle,#43d9c0 0%,rgba(67,217,192,0) 70%);opacity:.5"></div>
+  <div class="abs inst" style="left:112px;top:70px">TECNOLÓGICO NACIONAL DE MÉXICO · INSTITUTO TECNOLÓGICO</div>
+  <div class="abs eyebrow" style="left:112px;top:190px">UNIDAD 4</div>
+  <h1 class="abs" style="left:108px;top:260px;width:1000px">Pruebas<br>de <em>intruso</em></h1>
+  <p class="abs sub" style="left:112px;top:570px;width:900px">Herramientas de software · Social Engineering Toolkit · Herramientas para encontrar vulnerabilidades</p>
+  <div class="abs meta" style="left:112px;top:722px;line-height:1.7"><b>Materia:</b> Lenguajes de Interfaz<br><b>Docente:</b> [nombre del docente]</div>
+  <div class="abs" style="left:112px;top:870px;width:960px;display:flex;flex-wrap:wrap;gap:12px">
+    <div class="chip"><i>23620227</i>Abelardo Ortiz Ortiz</div><div class="chip"><i>22620083</i>Adriana Hernandez Martinez</div><div class="chip"><i>21620140</i>Karen García García</div><div class="chip"><i>21620008</i>Ricardo Martínez Santos</div><div class="chip"><i>23620209</i>Jazlynn Barrios Velasco</div>
+  </div>
+  <img class="abs art" src="../assets/estilo2-violeta.png" style="right:130px;top:190px;width:760px;height:683px;object-fit:cover">
+</div>
+
+<!-- ============================ ESTILO 2 · TEMARIO ============================ -->
+<div class="slide s2" id="s2-temario">
+  <div class="blob" style="width:800px;height:800px;left:-300px;top:-300px;background:radial-gradient(circle,#8a5cff 0%,rgba(138,92,255,0) 70%)"></div>
+  <div class="abs eyebrow" style="left:112px;top:110px">3 CLASES · 2 H</div>
+  <h1 class="abs" style="left:108px;top:190px;font-size:120px">Temario</h1>
+  <p class="abs sub" style="left:112px;top:350px;width:520px;font-size:28px">Cinco bloques con teoría, práctica y actividades con firma.</p>
+  <img class="abs art" src="../assets/estilo2-violeta.png" style="left:112px;top:560px;width:520px;height:421px;object-fit:cover;border-radius:44px">
+  <div class="abs" style="left:720px;top:96px;width:1090px;display:flex;flex-direction:column;gap:20px">
+    <div style="display:flex;align-items:center;gap:26px;background:rgba(255,255,255,.14);border-radius:28px;padding:20px 26px;height:166px"><div style="width:100px;height:100px;border-radius:50%;background:#43d9c0;color:#1d0a55;font-weight:800;font-size:46px;display:grid;place-items:center;flex:none">1</div><div style="flex:1"><div style="font-size:36px;font-weight:800">Fundamentos y marco</div><div style="font-size:23px;color:#d9d0ff;margin-top:6px">Pentest · tipos · metodologías · fases · marco legal</div></div><div style="background:#fff;color:#4a14c9;font-weight:800;font-size:22px;padding:10px 22px;border-radius:999px">CLASE 1</div></div>
+    <div style="display:flex;align-items:center;gap:26px;background:rgba(255,255,255,.14);border-radius:28px;padding:20px 26px;height:166px"><div style="width:100px;height:100px;border-radius:50%;background:#43d9c0;color:#1d0a55;font-weight:800;font-size:46px;display:grid;place-items:center;flex:none">2</div><div style="flex:1"><div style="font-size:36px;font-weight:800">Herramientas de software</div><div style="font-size:23px;color:#d9d0ff;margin-top:6px">Kali · Nmap · Metasploit · Burp Suite · Wireshark</div></div><div style="background:#fff;color:#4a14c9;font-weight:800;font-size:22px;padding:10px 22px;border-radius:999px">CLASE 1</div></div>
+    <div style="display:flex;align-items:center;gap:26px;background:rgba(255,255,255,.14);border-radius:28px;padding:20px 26px;height:166px"><div style="width:100px;height:100px;border-radius:50%;background:#43d9c0;color:#1d0a55;font-weight:800;font-size:46px;display:grid;place-items:center;flex:none">3</div><div style="flex:1"><div style="font-size:36px;font-weight:800">Social Engineering Toolkit</div><div style="font-size:23px;color:#d9d0ff;margin-top:6px">SET · phishing · concienciación · ética y ley</div></div><div style="background:#fff;color:#4a14c9;font-weight:800;font-size:22px;padding:10px 22px;border-radius:999px">CLASE 2</div></div>
+    <div style="display:flex;align-items:center;gap:26px;background:rgba(255,255,255,.14);border-radius:28px;padding:20px 26px;height:166px"><div style="width:100px;height:100px;border-radius:50%;background:#43d9c0;color:#1d0a55;font-weight:800;font-size:46px;display:grid;place-items:center;flex:none">4</div><div style="flex:1"><div style="font-size:36px;font-weight:800">Encontrar vulnerabilidades</div><div style="font-size:23px;color:#d9d0ff;margin-top:6px">Nessus · OpenVAS · ZAP · Nikto · CVE y CVSS</div></div><div style="background:#fff;color:#4a14c9;font-weight:800;font-size:22px;padding:10px 22px;border-radius:999px">CLASE 2</div></div>
+    <div style="display:flex;align-items:center;gap:26px;background:rgba(255,255,255,.14);border-radius:28px;padding:20px 26px;height:166px"><div style="width:100px;height:100px;border-radius:50%;background:#43d9c0;color:#1d0a55;font-weight:800;font-size:46px;display:grid;place-items:center;flex:none">5</div><div style="flex:1"><div style="font-size:36px;font-weight:800">Síntesis y conclusiones</div><div style="font-size:23px;color:#d9d0ff;margin-top:6px">Flujo por fase · comparativa · quiz final</div></div><div style="background:#fff;color:#4a14c9;font-weight:800;font-size:22px;padding:10px 22px;border-radius:999px">CLASE 3</div></div>
+  </div>
+</div>
+
+<!-- ============================ ESTILO 3 · PORTADA ============================ -->
+<div class="slide s3" id="s3-portada">
+  <div class="abs inst" style="left:112px;top:70px">TECNOLÓGICO NACIONAL DE MÉXICO · INSTITUTO TECNOLÓGICO</div>
+  <div class="abs eyebrow" style="left:112px;top:200px">UNIDAD 4</div>
+  <h1 class="abs" style="left:108px;top:250px;width:1000px">Pruebas<br>de <em>intruso</em></h1>
+  <p class="abs sub" style="left:112px;top:560px;width:880px">Herramientas de software · Social Engineering Toolkit · Herramientas para encontrar vulnerabilidades</p>
+  <div class="abs meta" style="left:112px;top:722px;line-height:1.7"><b>Materia:</b> Lenguajes de Interfaz<br><b>Docente:</b> [nombre del docente]</div>
+  <div class="abs card team" style="left:112px;top:850px;width:900px;height:170px;padding:20px 30px">
+    <div style="font:800 19px 'Manrope';letter-spacing:.18em;color:#5b7cd6;margin-bottom:2px">INTEGRANTES</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;column-gap:24px;font-size:21px;line-height:1.5"><span><i style="font-size:19px">23620227</i>Abelardo Ortiz Ortiz</span><span><i style="font-size:19px">21620008</i>Ricardo Martínez Santos</span><span><i style="font-size:19px">22620083</i>Adriana Hernandez Martinez</span><span><i style="font-size:19px">23620209</i>Jazlynn Barrios Velasco</span><span><i style="font-size:19px">21620140</i>Karen García García</span></div>
+  </div>
+  <img class="abs art" src="../assets/estilo3-carpeta.png" style="right:150px;top:130px;width:680px;height:777px;object-fit:cover">
+</div>
+
+<!-- ============================ ESTILO 3 · TEMARIO ============================ -->
+<div class="slide s3" id="s3-temario">
+  <div class="abs eyebrow" style="left:112px;top:84px">RUTA DE LAS 3 CLASES</div>
+  <h1 class="abs" style="left:108px;top:128px;font-size:104px">Temario</h1>
+  <img class="abs" src="../assets/estilo3-carpeta.png" style="right:112px;top:60px;width:230px;height:262px;object-fit:cover;border-radius:34px;box-shadow:0 20px 50px rgba(47,107,255,.3)">
+  <div class="abs" style="left:112px;top:350px;width:1696px;display:grid;grid-template-columns:repeat(3,1fr);gap:46px 36px">
+    <!-- cada tarjeta = una carpeta con pestaña -->
+    <div style="position:relative;margin-top:34px"><div style="position:absolute;top:-34px;left:0;width:190px;height:44px;background:#fff;border-radius:18px 18px 0 0;font:800 20px 'Manrope';color:#2f6bff;padding:9px 22px;letter-spacing:.1em">CLASE 1</div><div class="card" style="border-top-left-radius:0;padding:26px 30px;height:250px"><div style="font:800 62px 'Manrope';color:#2f6bff;line-height:1">01</div><div style="font-size:32px;font-weight:800;margin:10px 0 10px">Fundamentos y marco</div><div style="font-size:22px;color:#3c5590;line-height:1.45">Pentest · tipos · metodologías · fases · marco legal</div></div></div>
+    <div style="position:relative;margin-top:34px"><div style="position:absolute;top:-34px;left:0;width:190px;height:44px;background:#fff;border-radius:18px 18px 0 0;font:800 20px 'Manrope';color:#2f6bff;padding:9px 22px;letter-spacing:.1em">CLASE 1</div><div class="card" style="border-top-left-radius:0;padding:26px 30px;height:250px"><div style="font:800 62px 'Manrope';color:#2f6bff;line-height:1">02</div><div style="font-size:32px;font-weight:800;margin:10px 0 10px">Herramientas de software</div><div style="font-size:22px;color:#3c5590;line-height:1.45">Kali · Nmap · Metasploit · Burp Suite · Wireshark</div></div></div>
+    <div style="position:relative;margin-top:34px"><div style="position:absolute;top:-34px;left:0;width:190px;height:44px;background:#fff;border-radius:18px 18px 0 0;font:800 20px 'Manrope';color:#2f6bff;padding:9px 22px;letter-spacing:.1em">CLASE 2</div><div class="card" style="border-top-left-radius:0;padding:26px 30px;height:250px"><div style="font:800 62px 'Manrope';color:#2f6bff;line-height:1">03</div><div style="font-size:32px;font-weight:800;margin:10px 0 10px">Social Engineering Toolkit</div><div style="font-size:22px;color:#3c5590;line-height:1.45">SET · phishing · concienciación · ética y ley</div></div></div>
+    <div style="position:relative;margin-top:34px"><div style="position:absolute;top:-34px;left:0;width:190px;height:44px;background:#fff;border-radius:18px 18px 0 0;font:800 20px 'Manrope';color:#2f6bff;padding:9px 22px;letter-spacing:.1em">CLASE 2</div><div class="card" style="border-top-left-radius:0;padding:26px 30px;height:250px"><div style="font:800 62px 'Manrope';color:#2f6bff;line-height:1">04</div><div style="font-size:32px;font-weight:800;margin:10px 0 10px">Encontrar vulnerabilidades</div><div style="font-size:22px;color:#3c5590;line-height:1.45">Nessus · OpenVAS · ZAP · Nikto · CVE y CVSS</div></div></div>
+    <div style="position:relative;margin-top:34px"><div style="position:absolute;top:-34px;left:0;width:190px;height:44px;background:#fff;border-radius:18px 18px 0 0;font:800 20px 'Manrope';color:#2f6bff;padding:9px 22px;letter-spacing:.1em">CLASE 3</div><div class="card" style="border-top-left-radius:0;padding:26px 30px;height:250px"><div style="font:800 62px 'Manrope';color:#2f6bff;line-height:1">05</div><div style="font-size:32px;font-weight:800;margin:10px 0 10px">Síntesis y conclusiones</div><div style="font-size:22px;color:#3c5590;line-height:1.45">Flujo por fase · comparativa · quiz final</div></div></div>
+    <div style="margin-top:34px;display:flex;flex-direction:column;justify-content:center;gap:12px;padding:0 10px"><div style="font:800 24px 'Manrope';letter-spacing:.12em;color:#5b7cd6">CÓMO SE TRABAJA</div><div style="font-size:28px;font-weight:700;line-height:1.35">3 clases · 2 h<br>Actividades con firma <span class="pdf">A1–A10</span></div></div>
+  </div>
+</div>
+
+<!-- ============================ ESTILO 4 · PORTADA ============================ -->
+<div class="slide s4" id="s4-portada">
+  <div class="abs inst" style="left:112px;top:70px">TECNOLÓGICO NACIONAL DE MÉXICO · INSTITUTO TECNOLÓGICO</div>
+  <div class="abs eyebrow" style="left:112px;top:190px">UNIDAD 4</div>
+  <h1 class="abs" style="left:108px;top:262px;width:1000px">Pruebas<br>de <em>intruso</em></h1>
+  <p class="abs sub" style="left:112px;top:566px;width:900px">Herramientas de software · Social Engineering Toolkit · Herramientas para encontrar vulnerabilidades</p>
+  <div class="abs meta" style="left:112px;top:722px;line-height:1.7"><b>Materia:</b> Lenguajes de Interfaz<br><b>Docente:</b> [nombre del docente]</div>
+  <div class="abs card team" style="left:112px;top:852px;width:900px;height:168px;padding:18px 28px">
+    <div style="font:700 19px 'Space Grotesk';letter-spacing:.18em;color:#4a6ce7;margin-bottom:2px">INTEGRANTES</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;column-gap:24px;font-size:21px;line-height:1.5"><span><i style="font-size:19px">23620227</i>Abelardo Ortiz Ortiz</span><span><i style="font-size:19px">21620008</i>Ricardo Martínez Santos</span><span><i style="font-size:19px">22620083</i>Adriana Hernandez Martinez</span><span><i style="font-size:19px">23620209</i>Jazlynn Barrios Velasco</span><span><i style="font-size:19px">21620140</i>Karen García García</span></div>
+  </div>
+  <img class="abs art" src="../assets/estilo4-plano.png" style="right:130px;top:230px;width:720px;height:526px;object-fit:cover">
+  <div class="abs" style="right:130px;top:810px;width:720px;font:700 26px 'Space Grotesk';color:#1a2352;background:#ffd54a;border:4px solid #1a2352;box-shadow:8px 8px 0 #1a2352;padding:16px 24px;line-height:1.3">3 clases · 2 h · 10 actividades con firma</div>
+</div>
+
+<!-- ============================ ESTILO 4 · TEMARIO ============================ -->
+<div class="slide s4" id="s4-temario">
+  <div class="abs eyebrow" style="left:112px;top:110px">RUTA DE LAS 3 CLASES</div>
+  <h1 class="abs" style="left:108px;top:190px;font-size:118px">Temario</h1>
+  <img class="abs art" src="../assets/estilo4-plano.png" style="left:112px;top:560px;width:540px;height:395px;object-fit:cover;box-shadow:10px 10px 0 #1a2352">
+  <div class="abs" style="left:780px;top:84px;width:1030px;display:flex;flex-direction:column;gap:24px">
+    <div class="card" style="display:flex;align-items:stretch;height:164px"><div style="width:140px;background:#ffd54a;border-right:4px solid #1a2352;display:grid;place-items:center;font:700 64px 'Space Grotesk'">01</div><div style="flex:1;padding:16px 26px;display:flex;flex-direction:column;justify-content:center"><div style="font-size:35px;font-weight:700">Fundamentos y marco</div><div style="font-size:22px;color:#3f5ac3;margin-top:4px">Pentest · tipos · metodologías · fases · marco legal</div></div><div style="width:170px;border-left:4px solid #1a2352;display:grid;place-items:center;font:700 24px 'Space Grotesk';letter-spacing:.08em">CLASE 1</div></div>
+    <div class="card" style="display:flex;align-items:stretch;height:164px"><div style="width:140px;background:#93a4ec;border-right:4px solid #1a2352;display:grid;place-items:center;font:700 64px 'Space Grotesk'">02</div><div style="flex:1;padding:16px 26px;display:flex;flex-direction:column;justify-content:center"><div style="font-size:35px;font-weight:700">Herramientas de software</div><div style="font-size:22px;color:#3f5ac3;margin-top:4px">Kali · Nmap · Metasploit · Burp Suite · Wireshark</div></div><div style="width:170px;border-left:4px solid #1a2352;display:grid;place-items:center;font:700 24px 'Space Grotesk';letter-spacing:.08em">CLASE 1</div></div>
+    <div class="card" style="display:flex;align-items:stretch;height:164px"><div style="width:140px;background:#ffd54a;border-right:4px solid #1a2352;display:grid;place-items:center;font:700 64px 'Space Grotesk'">03</div><div style="flex:1;padding:16px 26px;display:flex;flex-direction:column;justify-content:center"><div style="font-size:35px;font-weight:700">Social Engineering Toolkit</div><div style="font-size:22px;color:#3f5ac3;margin-top:4px">SET · phishing · concienciación · ética y ley</div></div><div style="width:170px;border-left:4px solid #1a2352;display:grid;place-items:center;font:700 24px 'Space Grotesk';letter-spacing:.08em">CLASE 2</div></div>
+    <div class="card" style="display:flex;align-items:stretch;height:164px"><div style="width:140px;background:#93a4ec;border-right:4px solid #1a2352;display:grid;place-items:center;font:700 64px 'Space Grotesk'">04</div><div style="flex:1;padding:16px 26px;display:flex;flex-direction:column;justify-content:center"><div style="font-size:35px;font-weight:700">Encontrar vulnerabilidades</div><div style="font-size:22px;color:#3f5ac3;margin-top:4px">Nessus · OpenVAS · ZAP · Nikto · CVE y CVSS</div></div><div style="width:170px;border-left:4px solid #1a2352;display:grid;place-items:center;font:700 24px 'Space Grotesk';letter-spacing:.08em">CLASE 2</div></div>
+    <div class="card" style="display:flex;align-items:stretch;height:164px"><div style="width:140px;background:#ffd54a;border-right:4px solid #1a2352;display:grid;place-items:center;font:700 64px 'Space Grotesk'">05</div><div style="flex:1;padding:16px 26px;display:flex;flex-direction:column;justify-content:center"><div style="font-size:35px;font-weight:700">Síntesis y conclusiones</div><div style="font-size:22px;color:#3f5ac3;margin-top:4px">Flujo por fase · comparativa · quiz final</div></div><div style="width:170px;border-left:4px solid #1a2352;display:grid;place-items:center;font:700 24px 'Space Grotesk';letter-spacing:.08em">CLASE 3</div></div>
+  </div>
+</div>
+
+</body></html>

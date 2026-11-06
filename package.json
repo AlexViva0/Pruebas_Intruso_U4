@@ -1,0 +1,13 @@
+{
+  "name": "pruebas-intruso-u4",
+  "version": "1.0.0",
+  "description": "Presentación Unidad 4 · Pruebas de intruso (Lenguajes de Interfaz)",
+  "type": "module",
+  "scripts": { "build": "node build.mjs" },
+  "dependencies": {
+    "@fontsource/jetbrains-mono": "^5.2.0",
+    "@fontsource/space-grotesk": "^5.2.0",
+    "gsap": "^3.13.0"
+  },
+  "devDependencies": { "esbuild": "^0.25.0" }
+}
