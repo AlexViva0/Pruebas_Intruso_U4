@@ -1,4 +1,4 @@
-# Pruebas de intruso · Unidad 4 (Lenguajes de Interfaz)
+# Pruebas de intruso · Unidad 4 (Ciberseguridad)
 
 Presentación en un solo HTML (sin internet) con estilo «Plano» y animaciones GSAP + SVG.
 
@@ -24,6 +24,14 @@ Inicio / Fin · **N** notas del orador · **F** pantalla completa · **X** efect
 3. Si necesita animación propia: `src/fx/<id>.js` con `defineSlide` e impórtalo en `src/main.js`.
 4. `npm run build` y recorre el deck con las flechas.
 
+### Láminas de tarjetas («una a la vez»)
+Para N tarjetas que se explican por turnos: `data-steps="N"` y un `<div class="abs fdeck" data-layout="split|band|col">` con tarjetas
+`<div class="card fc"><div class="fc-n">1</div><div class="fc-tx"><div class="fc-h">Título</div><div class="fc-p">Texto con <b>clave</b></div></div><div class="fc-art" data-scene="id-1"></div></div>`.
+Paso 0 = tarjeta 1 a todo el ancho con su escena; cada → cambia de tarjeta; el último → junta las N en tamaño reducido.
+Regístrala con `defineFocus('id')` (`src/fx/focus.js`). Las escenas viven en `src/scenes.js` y se animan con atributos
+`data-bob`, `data-flow`, `data-seq`, `data-ripple`, `data-draw`… (lista completa en `src/fx/svgfx.js`).
+Las láminas sin tarjetas por turnos (tablas, comandos de Nmap) se animan solas hasta su estado final al entrar.
+
 ## Estado
 - [x] Motor, estilo y transiciones · 01 Portada · 02 Temario (con pasos por clase)
 - [x] **Clase 1 · Repaso exprés** · 03 Pentest y marco legal · 04 Cajas negra/gris/blanca · 05 Metodologías y fases · **A1** Repaso relámpago (V/F)
@@ -36,3 +44,15 @@ Animaciones: formas **redondas** y propias (esferas para caja negra/gris/blanca,
 
 Actividades: la etiqueta amarilla muestra el código (A1…); **T** inicia/pausa el cronómetro (`data-time`); **→** revela la respuesta.
 **Regla del proyecto:** todo el contenido sale de la investigación (`Unidad 4 - Pruebas de Intruso - Investigacion Ampliada`); nada de fuera.
+
+## Afinado de animaciones · noviembre de 2026
+
+- Repaso de pentest: se activan las tres escenas; el radar sincroniza barrido, detección y ondas de respuesta.
+- Kali: órbitas elípticas, profundidad de las burbujas, halo giratorio y señales hacia las herramientas.
+- Escáneres: radar con estela y catálogo sincronizado; servidores ajustados al tamaño de cada dibujo.
+- Conexiones SVG: paquetes con estela direccional y halo de recepción; geometría precalculada.
+- CVSS: aguja y marcador comparten un único valor animado, con pausas para facilitar la lectura.
+- Ruleta (`src/fx/ruleta.js`): luces, aceleración/desaceleración, resultado central, contador y selección sin repeticiones. Un giro interrumpido queda resuelto al regresar; Enter/Espacio funcionan sobre el botón enfocado.
+- Las tarjetas cancelan sus entradas y bucles al cambiar de estado. `X` también desactiva transiciones CSS; se respeta la preferencia del sistema de reducir movimiento.
+
+Validación en Chromium: recorrido de las 55 láminas y todos sus pasos, navegación rápida de las tarjetas, sincronía CVSS, giro interrumpido, siete preguntas y reinicio, efectos desactivados y movimiento reducido. Sin errores ni advertencias de consola. El HTML sigue siendo autónomo y funciona sin conexión.
