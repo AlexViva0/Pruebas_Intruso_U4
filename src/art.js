@@ -71,3 +71,20 @@ export function playScan(svg, { gsap, animate, fx, delay = 0, own }) {
     .add(() => { gsap.set(lens, { clearProps: 'transform' }); loops(); });
   own(tl);
 }
+
+// Cubos isométricos (caja negra / gris / blanca) en el estilo Plano.
+export function cubeArt(kind) {
+  const N = '#1a2352';
+  const C = { negra: ['#3a4690', '#1a2352', '#10163a'], gris: ['#e2e7fa', '#aab4de', '#8f9bd0'], blanca: ['#ffffff', '#f2ecf0', '#fff6f1'] }[kind];
+  const op = kind === 'gris' ? ' fill-opacity=".88"' : '';
+  const faces = `<polygon points="150,60 210,95 150,130 90,95" fill="${C[0]}"${op}/><polygon points="90,95 150,130 150,200 90,165" fill="${C[1]}"${op}/><polygon points="150,130 210,95 210,165 150,200" fill="${C[2]}"${op}/>`;
+  const edges = `<g fill="none" stroke="${N}" stroke-width="5" stroke-linejoin="round"><polygon points="150,60 210,95 210,165 150,200 90,165 90,95"/><polyline points="90,95 150,130 210,95"/><line x1="150" y1="130" x2="150" y2="200"/></g>`;
+  let mark = '';
+  if (kind === 'negra') mark = `<g transform="translate(150,130) skewY(-30)"><text class="q" x="30" y="54" text-anchor="middle" font-size="58" font-weight="700" fill="#ffd54a" font-family="Space Grotesk">?</text></g>`;
+  if (kind === 'gris') mark = `<g transform="translate(90,95) skewY(30)"><g class="ck"><circle cx="18" cy="38" r="9" fill="#ffd54a" stroke="${N}" stroke-width="3.5"/><line x1="27" y1="38" x2="50" y2="38" stroke="${N}" stroke-width="5" stroke-linecap="round"/><line x1="42" y1="38" x2="42" y2="46" stroke="${N}" stroke-width="4" stroke-linecap="round"/><line x1="49" y1="38" x2="49" y2="44" stroke="${N}" stroke-width="4" stroke-linecap="round"/></g></g>`;
+  if (kind === 'blanca') mark = `<g transform="translate(150,130) skewY(-30)"><rect class="cl" x="8" y="16" width="34" height="6" rx="3" fill="#4a6ce7"/><rect class="cl" x="14" y="30" width="38" height="6" rx="3" fill="${N}"/><rect class="cl" x="14" y="44" width="24" height="6" rx="3" fill="#ffd54a"/><rect class="cl" x="8" y="58" width="42" height="6" rx="3" fill="#4a6ce7"/></g>`;
+  return `<svg class="cube-svg" viewBox="55 50 190 190" aria-hidden="true"><ellipse class="shadow" cx="150" cy="226" rx="70" ry="12" fill="${N}" opacity=".18"/><g class="cube">${faces}${mark}${edges}</g></svg>`;
+}
+export function mountCubes() {
+  document.querySelectorAll('[data-art^="cube-"]').forEach(n => { n.innerHTML = cubeArt(n.dataset.art.slice(5)); });
+}

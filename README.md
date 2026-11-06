@@ -26,4 +26,8 @@ Inicio / Fin · **N** notas del orador · **F** pantalla completa · **X** efect
 
 ## Estado
 - [x] Motor, estilo y transiciones · 01 Portada · 02 Temario (con pasos por clase)
-- [ ] Bloques 1–5 (teoría y actividades A1–A10), según `Unidad 4 - Pruebas de Intruso - Investigación Ampliada`.
+- [x] **Bloque 1** · 03 ¿Qué es una prueba de intrusión? · 04 Marco legal y ético · 05 Caja negra, gris y blanca · 06 Metodologías · 07 Las 5 fases · **A1** ¿Qué tipo de pentest? (arrastrar) · **A2** Ordena las fases (clic para intercambiar)
+- [ ] Bloques 2–5 (teoría y actividades A3–A10), según `Unidad 4 - Pruebas de Intruso - Investigación Ampliada`.
+
+Actividades: la etiqueta amarilla muestra el código (A1…); **T** inicia/pausa el cronómetro (`data-time`); **→** revela la respuesta.
+Los «entregables» de cada fase (`src/fx/phases.js`) son una propuesta del equipo, no vienen del documento.

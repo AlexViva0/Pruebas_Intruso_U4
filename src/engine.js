@@ -45,12 +45,14 @@ function activate(i, { instant, delay }) {
   const s = slides[i];
   slides.forEach((x, k) => x.classList.toggle('active', k === i));
   stage.dataset.chrome = s.dataset.chrome || 'on';
+  stage.dataset.kind = s.dataset.kind || 'teoria';
+  timerReset(s);
   $('#tag').textContent = s.dataset.tag || '';
   $('#bandtxt').textContent = s.dataset.band || '';
   $('#count').textContent = pad(i + 1) + ' / ' + pad(slides.length);
   const anims = $$('[data-anim]', s), steps = $$('[data-step]', s);
   gsap.set(steps, { autoAlpha: 0 });
-  const api = { slide: s, gsap, fx: PI.fx, animate: !instant && PI.fx, delay, own: t => { own.push(t); return t; } };
+  const api = { slide: s, gsap, fx: PI.fx, animate: !instant && PI.fx, delay, step, own: t => { own.push(t); return t; } };
   if (api.animate) own.push(reveal(anims, { delay }));
   else gsap.set(anims, { clearProps: CLEAR });
   if (step > 0) steps.filter(e => +e.dataset.step <= step).forEach(e => gsap.set(e, { clearProps: CLEAR }));
@@ -91,7 +93,7 @@ export function go(i, { wipe = true, animate = true, showAll = false } = {}) {
 
 function showStep(s, n, dir) {
   const hook = PI.hooks[s.dataset.id], els = $$(`[data-step="${dir > 0 ? n : n + 1}"]`, s);
-  const api = { slide: s, gsap, fx: PI.fx, animate: PI.fx, instant: !PI.fx, own: t => { own.push(t); return t; } };
+  const api = { slide: s, gsap, fx: PI.fx, animate: PI.fx, instant: !PI.fx, step: n, own: t => { own.push(t); return t; } };
   if (dir > 0) {
     if (PI.fx) own.push(reveal(els, { stagger: 0.1 })); else gsap.set(els, { clearProps: CLEAR });
     if (hook && hook.step) hook.step(s, n, n - 1, api);
@@ -129,6 +131,30 @@ function renderNotes() {
   (s.dataset.notes || 'Sin notas.').split('|').filter(Boolean).forEach(x => { const li = document.createElement('li'); li.textContent = x.trim(); nl.appendChild(li); });
 }
 
+/* ---------- temporizador (tecla T) en las láminas con data-time ---------- */
+const tm = { left: 0, run: false, last: 0, raf: 0, started: false };
+function timerRender() {
+  const el = $('#timer'), t = idx >= 0 ? +slides[idx].dataset.time || 0 : 0;
+  el.hidden = !t; if (!t) return;
+  const l = Math.max(0, Math.ceil(tm.left));
+  el.textContent = pad(Math.floor(l / 60)) + ':' + pad(l % 60);
+  el.classList.toggle('run', tm.run); el.classList.toggle('low', tm.run && tm.left <= 30 && tm.left > 0);
+  el.classList.toggle('end', tm.started && tm.left <= 0);
+}
+function timerReset(s) { tm.run = false; cancelAnimationFrame(tm.raf); tm.left = +s.dataset.time || 0; tm.started = false; timerRender(); }
+function timerTick() {
+  if (!tm.run) return;
+  const n = performance.now(); tm.left -= (n - tm.last) / 1000; tm.last = n;
+  if (tm.left <= 0) { tm.left = 0; tm.run = false; }
+  timerRender(); if (tm.run) tm.raf = requestAnimationFrame(timerTick);
+}
+function timerToggle() {
+  const t = +slides[idx].dataset.time; if (!t) return;
+  if (tm.left <= 0) tm.left = t;
+  tm.run = !tm.run; tm.started = true;
+  if (tm.run) { tm.last = performance.now(); timerTick(); } else timerRender();
+}
+
 function refresh() { const st = step; leave(idx); activate(idx, { instant: true, delay: 0 }); step = st; }
 
 function toggleFx() {
@@ -146,6 +172,7 @@ function onKey(e) {
   else if (k === 'End') go(slides.length - 1, { showAll: true });
   else if (k === 'n' || k === 'N') { const p = $('#notes'); p.hidden = !p.hidden; renderNotes(); }
   else if (k === 'x' || k === 'X') toggleFx();
+  else if (k === 't' || k === 'T') timerToggle();
   else if (k === 'f' || k === 'F') { if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen && document.documentElement.requestFullscreen().catch(() => {}); }
   else if (k === 'Escape') $('#notes').hidden = true;
 }
@@ -167,6 +194,6 @@ export function init() {
   const hash = parseInt(location.hash.slice(1), 10), saved = parseInt(store.get('pi-u4-slide'), 10);
   const start = hash >= 1 && hash <= slides.length ? hash - 1 : (saved >= 0 && saved < slides.length ? saved : 0);
   go(start, { wipe: false, animate: start === 0 });
-  Object.assign(PI, { go, next, prev, gsap, state: () => ({ idx, step, max: maxStep(slides[idx]), total: slides.length }) });
+  Object.assign(PI, { go, next, prev, gsap, scale: () => parseFloat(stage.style.getPropertyValue('--s')) || 1, state: () => ({ idx, step, max: maxStep(slides[idx]), total: slides.length }) });
   window.PI = PI;
 }

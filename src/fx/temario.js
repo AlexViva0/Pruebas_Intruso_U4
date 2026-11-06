@@ -14,7 +14,7 @@ defineSlide('temario', {
   enter(s, api) {
     maskTitle(s, api, 0.1);
     playScan(s.querySelector('.art svg'), { ...api, delay: api.delay + 0.3 });
-    paint(s, 0, { ...api, instant: true });
+    // el estado de un paso ya visto lo aplica el motor llamando a step(); en el paso 0 no se toca nada
   },
   step(s, n, from, api) { paint(s, n, api); }
 });
