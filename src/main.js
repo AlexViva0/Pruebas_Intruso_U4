@@ -1,20 +1,17 @@
 import './fx/portada.js';
 import './fx/temario.js';
-import './fx/b1-pentest.js';
-import './fx/b1-legal.js';
+import './fx/r1.js';
 import './fx/b1-cajas.js';
-import './fx/b1-metodologias.js';
-import './fx/b1-fases.js';
+import './fx/r3.js';
 import './fx/a1.js';
-import './fx/a2.js';
 import './fx/b2-kali.js';
-import './fx/b2-nmap.js';
-import './fx/b2-nmap-cmd.js';
+import './fx/nmap-lite.js';
 import './fx/b2-metasploit.js';
 import './fx/b2-burp.js';
 import './fx/b2-wireshark.js';
+import './fx/a2.js';
 import './fx/a3.js';
-import './fx/a4.js';
+import './fx/quiz.js';
 import { init } from './engine.js';
 import { mountArt, mountOrbs, mountB2 } from './art.js';
 

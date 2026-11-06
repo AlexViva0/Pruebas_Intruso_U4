@@ -1,0 +1,21 @@
+<section class="slide" data-id="b2-nmap" data-title="Nmap esencial" data-tag="Herramientas de software" data-band="Clase 1 · Herramientas de software" data-steps="4" data-notes="Nmap: escáner de redes (tabla 5.2). Descubre qué dispositivos, puertos y servicios están activos y es habitualmente el primer paso de un pentest: mapear la superficie de ataque.|Uso educativo: solo sobre equipos propios o autorizados. 192.168.1.1 es la dirección del ejemplo de la investigación.|Pulsa → para ir mostrando un comando por paso: escaneo básico; -sV (versión de los servicios); -O (sistema operativo); --script vuln (scripts NSE para vulnerabilidades).|El motor de scripts NSE (Nmap Scripting Engine) ejecuta scripts en Lua para tareas avanzadas de detección.|Esta lámina es solo de repaso/herramienta: en esta clase no hay práctica con Nmap.">
+  <h1 class="abs title" style="left:108px;top:92px;font-size:76px"><span class="ln"><span>Nmap esencial</span></span></h1>
+  <div class="abs warn" data-anim="stamp" data-delay=".15" style="left:1210px;top:104px"><span class="mono">USO EDUCATIVO</span> solo sobre equipos propios o autorizados</div>
+  <div class="abs card nm-def" data-anim="up" data-delay=".1" style="left:112px;top:228px;width:1696px;height:150px">
+    <div class="nm-k mono">ESCÁNER DE REDES</div>
+    <p>Descubre qué <b>dispositivos, puertos y servicios</b> están activos. Suele ser el <b>primer paso</b> de un pentest: mapear la superficie de ataque.</p>
+  </div>
+  <div class="abs card term" data-anim="pop" data-delay=".2" style="left:112px;top:420px;width:1130px;height:580px">
+    <div class="term-h"><i></i><i></i><i></i><span class="mono">terminal</span></div>
+    <div class="cmdrow" data-step="1" data-fx="left" data-full="nmap 192.168.1.1"><div class="cmd"></div><div class="cdesc">Escaneo básico de un host</div></div>
+    <div class="cmdrow" data-step="2" data-fx="left" data-full="nmap -sV 192.168.1.1"><div class="cmd"></div><div class="cdesc">Detecta la versión de los servicios</div></div>
+    <div class="cmdrow" data-step="3" data-fx="left" data-full="nmap -O 192.168.1.1"><div class="cmd"></div><div class="cdesc">Intenta detectar el sistema operativo</div></div>
+    <div class="cmdrow" data-step="4" data-fx="left" data-full="nmap --script vuln 192.168.1.1"><div class="cmd"></div><div class="cdesc">Scripts NSE para detectar vulnerabilidades</div></div>
+  </div>
+  <div class="abs card nse" data-step="4" data-fx="pop" data-delay=".5" style="left:1290px;top:420px;width:518px;height:580px">
+    <div class="nse-k mono">NSE</div>
+    <div class="nse-t">Nmap Scripting Engine</div>
+    <p>Ejecuta <b>scripts en Lua</b> para tareas avanzadas de detección.</p>
+    <div class="nse-c mono">--script vuln</div>
+  </div>
+</section>

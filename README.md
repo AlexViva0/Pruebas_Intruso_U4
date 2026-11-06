@@ -26,9 +26,9 @@ Inicio / Fin · **N** notas del orador · **F** pantalla completa · **X** efect
 
 ## Estado
 - [x] Motor, estilo y transiciones · 01 Portada · 02 Temario (con pasos por clase)
-- [x] **Bloque 1** · 03 ¿Qué es una prueba de intrusión? · 04 Marco legal y ético · 05 Caja negra, gris y blanca · 06 Metodologías · 07 Las 5 fases · **A1** ¿Qué tipo de pentest? (arrastrar) · **A2** Ordena las fases (clic para intercambiar)
-- [x] **Bloque 2** · 10 Kali Linux · 11 Nmap · 12 Nmap: comandos básicos · 13 Metasploit · 14 Burp Suite · 15 Wireshark · **A3** Práctica Nmap en tu equipo (solo 127.0.0.1) · **A4** ¿Qué hace cada herramienta? (arrastrar)
-- [ ] Bloques 3–5 (SET, escáneres de vulnerabilidades, síntesis; actividades A5–A10).
+- [x] **Clase 1 · Repaso exprés** · 03 Pentest y marco legal · 04 Cajas negra/gris/blanca · 05 Metodologías y fases · **A1** Repaso relámpago (V/F)
+- [x] **Clase 1 · Herramientas de software** · 07 Kali · 08 Nmap esencial · 09 Metasploit · 10 Burp Suite · 11 Wireshark · **A2** Memorama · **A3** ¿Qué hace cada herramienta? (arrastrar) · **A4** Quiz (14–18)
+- [ ] Clase 2 (SET, escáneres de vulnerabilidades; A5–A10) y Clase 3 (síntesis, conclusiones; A11–A13).
 
 Animaciones: formas **redondas** y propias (esferas para caja negra/gris/blanca, órbita de Kali, pared y sonda para el pentest); no se reutilizan las del deck de otro equipo.
 

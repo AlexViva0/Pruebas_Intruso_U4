@@ -211,3 +211,50 @@ mark{background:var(--yellow);color:var(--navy);padding:0 6px}
 .zones4 .zh{flex-direction:column;align-items:flex-start;gap:2px}.zones4 .zh b{font-size:30px}.zones4 .zh small{font-size:19px}
 .ms-chips .chip{font-size:17px;padding:4px 10px}
 .ws-ft:empty::before{content:"sin filtro";color:#93a4ec;font-weight:500}
+
+/* ======== Repasos (clase 1) ======== */
+.r1 .cm{padding:14px 22px}.r1 .cm-art{height:150px;margin-bottom:0}.r1 .cm-h{font-size:32px;margin:2px 0 8px}.r1 .cm p{font-size:22px;margin-top:8px;line-height:1.3}
+.hats3{display:grid;grid-template-columns:repeat(3,1fr);padding:0}.h3{display:flex;align-items:center;gap:20px;padding:0 28px;border-right:4px solid var(--navy)}.h3:last-child{border-right:0}
+.h3 svg{width:110px;height:74px;flex:none}.h3 b{display:block;font-size:30px}.h3 span{display:block;font-size:22px;line-height:1.3;color:var(--blue-d);margin-top:4px}
+.ref-r1{gap:26px;justify-content:space-between}.ref-r1 p{font-size:36px}
+
+/* ---- Repaso 3/3: metodologías y fases (compacto) ---- */
+.mets4{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.m4{padding:22px 24px;display:flex;flex-direction:column;gap:8px;justify-content:center}
+.m4 b{font:700 38px/1.05 'Space Grotesk'}.m4 span{font-size:22px;line-height:1.25;color:#2b3a78}.m4 .chip{align-self:flex-start;margin-top:4px;font-size:18px}
+.fz.sm{grid-template-columns:200px 1fr 520px;gap:30px;padding:20px 34px}
+.fz.sm .fz-nn{font-size:150px}.fz.sm .fz-t{font-size:50px}.fz.sm .fz-d{font-size:28px;margin:8px 0 14px}
+.fz.sm .fz-tl{font-size:17px;margin-bottom:8px}.fz.sm .fz-tools .chip{font-size:21px;padding:4px 12px}
+.fz.sm .fz-r{padding:18px 24px}.fz.sm .fz-ed{font-size:30px;margin-top:8px}.fz.sm .fz-e{font-size:17px}
+
+/* ---- Nmap esencial ---- */
+.nm-def{padding:18px 34px;display:flex;flex-direction:column;justify-content:center;gap:6px}
+.nm-k{font-size:20px;letter-spacing:.14em;color:var(--blue)}.nm-def p{font-size:31px;line-height:1.3}
+
+/* ---- A1 verdadero / falso ---- */
+.vfgrid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr);gap:26px 34px}
+.vf{padding:16px 26px;display:grid;grid-template-columns:54px 1fr;grid-template-rows:auto 1fr;column-gap:18px;align-content:start}
+.vf-n{grid-row:1;font-size:36px;font-weight:700;color:var(--blue)}.vf-t{font:700 28px/1.25 'Space Grotesk'}
+.vf-a{grid-column:2;display:flex;align-items:center;gap:18px;margin-top:10px}
+.vf-a .stamp{--sh:4px;font-size:22px;padding:4px 14px;flex:none}.vf-a .stamp.ok{background:#8fe3a2}.vf-a .stamp.no{background:#ff9d8f}
+.vf-w{font-size:21px;line-height:1.25;color:#2b3a78}
+
+/* ---- A2 memorama ---- */
+.hud{display:flex;gap:30px;font:700 26px 'Space Grotesk';letter-spacing:.1em;color:var(--cream)}.hud b{color:var(--yellow);font-size:34px;margin-left:6px}
+.mgrid{display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:1fr 1fr;gap:28px 28px;perspective:1400px}
+.mc{cursor:pointer;position:relative}.mi{position:absolute;inset:0;transform-style:preserve-3d}
+.mf{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:4px solid var(--navy);box-shadow:8px 8px 0 var(--navy);border-radius:6px;display:grid;place-items:center;text-align:center;padding:16px}
+.mfb{background:var(--navy);color:var(--yellow);font:700 110px 'Space Grotesk'}
+.mfr{transform:rotateY(180deg);font:700 38px/1.15 'Space Grotesk'}.mfr.t{background:var(--yellow);color:var(--navy)}.mfr.c{background:var(--cream);color:var(--navy)}
+.mc.done .mfr{background:#8fe3a2}
+
+/* ---- Quiz ---- */
+.qn{left:112px;top:104px;font-size:26px;letter-spacing:.16em;color:var(--yellow);font-weight:700}
+.qq{left:112px;top:156px;width:1696px;height:240px;display:grid;place-items:center;padding:20px 50px;text-align:center}.qq p{font:700 50px/1.2 'Space Grotesk'}
+.qgrid{left:112px;top:430px;width:1696px;height:440px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:24px 30px}
+.qt{display:flex;align-items:center;gap:26px;padding:0 34px;border:4px solid var(--navy);box-shadow:8px 8px 0 var(--navy);border-radius:6px;color:var(--navy);position:relative}
+.qs{font-size:54px;flex:none;width:70px;text-align:center}.qx{font:700 36px/1.2 'Space Grotesk'}
+.q0{background:var(--yellow)}.q1{background:var(--cream)}.q2{background:var(--peri)}.q3{background:#8fe3a2}
+.qc{position:absolute;right:22px;top:50%;margin-top:-34px;width:68px;height:68px;border-radius:50%;background:var(--navy);color:var(--yellow);font:700 44px/68px 'Space Grotesk';text-align:center;font-style:normal}
+.qans{left:112px;top:906px;width:1696px;height:100px;background:var(--navy);color:var(--cream);display:flex;align-items:center;gap:30px;padding:0 40px;border:4px solid var(--cream);font:700 40px 'Space Grotesk'}
+.qans b{color:var(--yellow);font-size:24px;letter-spacing:.16em}

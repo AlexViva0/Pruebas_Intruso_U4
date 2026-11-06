@@ -44,7 +44,7 @@ function play(card, { gsap, fx, own }) {
   }
 }
 
-defineSlide('b1-cajas', {
+defineSlide('r2', {
   enter(s, api) {
     maskTitle(s, api, 0.1);
     for (let i = 1; i <= api.step; i++) play(s.querySelector(`[data-k="${KEYS[i]}"]`), api);

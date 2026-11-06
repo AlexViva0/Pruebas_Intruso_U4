@@ -5,9 +5,9 @@ import { maskTitle } from './util.js';
 // Paso 0: ruta completa · pasos 1–3: se enfoca una clase y se atenúan las demás.
 const INFO = [
   ['3 clases · 2 h', '~35 min de exposición por clase'],
-  ['CLASE 1', 'Bloques 1 y 2 · fundamentos y herramientas'],
-  ['CLASE 2', 'Bloques 3 y 4 · SET y escáneres'],
-  ['CLASE 3', 'Bloque 5 · síntesis y quiz final']
+  ['CLASE 1', 'Repaso exprés + herramientas de software'],
+  ['CLASE 2', 'SET y escáneres de vulnerabilidades'],
+  ['CLASE 3', 'Síntesis, conclusiones y quiz final']
 ];
 
 defineSlide('temario', {

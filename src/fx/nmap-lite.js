@@ -12,7 +12,7 @@ function show(row, { gsap, fx, instant }) {
   gsap.to(o, { n: full.length, duration: Math.min(1.3, 0.35 + full.length * 0.03), ease: 'none', delay: 0.15, onUpdate: () => { box.textContent = '$ ' + full.slice(0, Math.round(o.n)); }, onComplete: () => { box.innerHTML = paint(full); } });
 }
 
-defineSlide('b2-nmap-cmd', {
+defineSlide('b2-nmap', {
   enter(s, api) {
     maskTitle(s, api, 0.1);
     s.querySelectorAll('.cmdrow').forEach(r => { if (+r.dataset.step <= api.step) show(r, { gsap: api.gsap, fx: api.fx, instant: true }); else r.querySelector('.cmd').textContent = ''; });
