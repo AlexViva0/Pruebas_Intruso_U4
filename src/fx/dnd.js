@@ -6,6 +6,13 @@ import { flipMove } from './util.js';
 
 gsap.registerPlugin(Draggable);
 
+// Respuesta visual al revelar: los aciertos dan un saltito, los errores «niegan con la cabeza».
+export function feedback(ok, bad) {
+  if (!PI.fx) return;
+  if (ok.length) gsap.fromTo(ok, { y: 0, scale: 1 }, { keyframes: [{ y: -14, scale: 1.05, duration: 0.18, ease: 'power2.out' }, { y: 0, scale: 1, duration: 0.5, ease: 'bounce.out' }], stagger: 0.07 });
+  if (bad.length) gsap.fromTo(bad, { rotation: 0 }, { keyframes: [{ rotation: -4, duration: 0.07 }, { rotation: 4, duration: 0.07 }, { rotation: -3, duration: 0.07 }, { rotation: 2, duration: 0.07 }, { rotation: 0, duration: 0.1 }], stagger: 0.05 });
+}
+
 export function makeSorter(s, { cardSel = '.case', order = ['tray', 'negra', 'gris', 'blanca'] } = {}) {
   const cards = [...s.querySelectorAll(cardSel)];
   const zone = n => s.querySelector(`[data-zone="${n}"]`), body = z => z.querySelector('.zb') || z;
@@ -50,6 +57,7 @@ export function makeSorter(s, { cardSel = '.case', order = ['tray', 'negra', 'gr
     }
     cards.forEach(mark);
     const wrong = cards.filter(c => cur(c) !== c.dataset.ok);
+    feedback(cards.filter(c => !wrong.includes(c)), wrong);
     const showWhy = c => { why(c); gsap.fromTo(c.querySelector('.cw'), { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.3 }); };
     wrong.forEach((c, i) => st.calls.push(gsap.delayedCall(1.5 + i * 0.7, () => { place(c, c.dataset.ok); c.classList.remove('bad'); c.classList.add('ok'); st.calls.push(gsap.delayedCall(0.7, () => showWhy(c))); })));
     cards.filter(c => !wrong.includes(c)).forEach((c, i) => st.calls.push(gsap.delayedCall(1.2 + i * 0.1, () => showWhy(c))));

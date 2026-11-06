@@ -14,10 +14,18 @@ function paint(s, n, { gsap, fx, instant }) {
     const on = n === 0 || +c.dataset.m === n, dim = n !== 0 && !on;
     gsap.to(c, { opacity: dim ? 0.5 : 1, y: on && n ? -14 : 0, '--sh': (dim ? 3 : on && n ? 16 : 10) + 'px', duration: instant || !fx ? 0 : 0.4, ease: 'power3.out', overwrite: 'auto' });
   });
+  // el icono de la metodología activa da un salto y su etiqueta «late»
+  const cur = n && s.querySelector(`.mt[data-m="${n}"]`);
+  if (cur && !instant && fx) {
+    const ic = cur.querySelector('svg'), chip = cur.querySelector('.chip');
+    gsap.fromTo(ic, { y: 0, rotation: 0, scale: 1 }, { keyframes: [{ y: -22, rotation: -10, scale: 1.12, duration: 0.2, ease: 'power2.out' }, { y: 0, rotation: 6, scale: 0.95, duration: 0.18, ease: 'power2.in' }, { rotation: 0, scale: 1, duration: 0.5, ease: 'elastic.out(1,.4)' }], transformOrigin: '50% 100%', overwrite: 'auto' });
+    gsap.fromTo(chip, { scale: 1 }, { scale: 1.15, duration: 0.15, yoyo: true, repeat: 1, delay: 0.3, ease: 'power2.out', overwrite: 'auto' });
+  }
   const [k, t, d] = INFO[n], K = s.querySelector('#mtd-k'), T = s.querySelector('.mtd-t'), D = s.querySelector('.mtd-d');
   const set = () => { K.textContent = k; T.innerHTML = t; D.innerHTML = d; };
   if (instant || !fx) set();
-  else gsap.timeline().to([K, T, D], { y: -12, autoAlpha: 0, duration: 0.14 }).add(set).fromTo([K, T, D], { y: 14, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.3, stagger: 0.05, ease: 'power3.out' });
+  else gsap.timeline().to([K, T, D], { y: -12, autoAlpha: 0, duration: 0.14 }).add(set).fromTo([K, T, D], { y: 14, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.3, stagger: 0.05, ease: 'power3.out' })
+    .add(() => { const b = T.querySelector('b'); if (b) gsap.fromTo(b, { backgroundSize: '0% 100%' }, { backgroundSize: '100% 100%', duration: 0.5, ease: 'power3.out' }); }, '-=.1');
 }
 
 defineSlide('b1-metodologias', {

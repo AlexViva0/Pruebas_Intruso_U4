@@ -106,11 +106,12 @@ export function kaliArt() {
   const small = [];
   for (let i = 0; i < 12; i++) small.push(`<circle class="ks" data-r="215" data-a="${i * 30 + 8}" data-v="-4" r="${i % 3 ? 13 : 18}" fill="${i % 2 ? '#93a4ec' : '#dfe4fb'}" stroke="${N}" stroke-width="4"/>`);
   for (let i = 0; i < 16; i++) small.push(`<circle class="ks" data-r="275" data-a="${i * 22.5 + 4}" data-v="3" r="${i % 3 ? 11 : 15}" fill="${i % 2 ? '#dfe4fb' : '#93a4ec'}" stroke="${N}" stroke-width="4"/>`);
-  const named = KALI_NAMED.map(([t, a]) => `<g class="kn" data-r="150" data-a="${a}" data-v="6"><circle r="54" fill="#ffd54a" stroke="${N}" stroke-width="6"/><text y="6" text-anchor="middle" font-family="Space Grotesk" font-weight="700" font-size="${t.length > 8 ? 18 : 22}" fill="${N}">${t}</text></g>`).join('');
+  const named = KALI_NAMED.map(([t, a]) => `<g class="kn" data-r="150" data-a="${a}" data-v="6"><g class="kni"><circle r="54" fill="#ffd54a" stroke="${N}" stroke-width="6"/><text y="6" text-anchor="middle" font-family="Space Grotesk" font-weight="700" font-size="${t.length > 8 ? 18 : 22}" fill="${N}">${t}</text></g></g>`).join('');
   return `<svg class="kali-svg" viewBox="0 0 848 628" aria-hidden="true">
     <g fill="none" stroke="${N}" stroke-opacity=".28" stroke-width="3" stroke-dasharray="3 10" stroke-linecap="round"><circle cx="424" cy="314" r="150"/><circle cx="424" cy="314" r="215"/><circle cx="424" cy="314" r="275"/></g>
     <g class="kcore"><circle cx="424" cy="314" r="84" fill="${N}"/><circle cx="424" cy="314" r="100" fill="none" stroke="#4a6ce7" stroke-width="5" stroke-dasharray="2 12" stroke-linecap="round"/>
       <text x="424" y="308" text-anchor="middle" font-family="Space Grotesk" font-weight="700" font-size="38" fill="#fff6f1">Kali</text><text x="424" y="344" text-anchor="middle" font-family="Space Grotesk" font-weight="500" font-size="26" fill="#93a4ec">Linux</text></g>
+    <circle class="kshock" cx="424" cy="314" r="92" fill="none" stroke="#ffd54a" stroke-width="6" opacity="0"/>
     <g class="kbubbles" transform="translate(424 314)">${small.join('')}${named}</g>
   </svg>`;
 }
@@ -119,17 +120,18 @@ export function kaliArt() {
 export function nmapArt() {
   const N = '#1a2352', ys = [130, 306, 482], open = [[1, 0, 1], [0, 1, 0], [0, 1, 1]];
   const dev = ys.map((y, d) => {
-    const ports = [22, 80, 443].map((p, i) => `<g class="pt ${open[d][i] ? 'op' : 'cl'}"><rect x="${584 + i * 70}" y="${y - 6}" width="52" height="52" rx="16"/><text x="${610 + i * 70}" y="${y + 80}" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="17">${p}</text></g>`).join('');
+    const ports = [22, 80, 443].map((p, i) => `<g class="pt ${open[d][i] ? 'op' : 'cl'}" data-o="${610 + i * 70} ${y + 20}"><rect x="${584 + i * 70}" y="${y - 6}" width="52" height="52" rx="16"/><text x="${610 + i * 70}" y="${y + 80}" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="17">${p}</text></g>`).join('');
     const icon = [`<rect x="580" y="${y - 46}" width="44" height="32" rx="8"/><path d="M594 ${y - 10} H610"/>`, `<rect x="580" y="${y - 46}" width="44" height="12" rx="5"/><rect x="580" y="${y - 30}" width="44" height="12" rx="5"/>`, `<rect x="580" y="${y - 36}" width="44" height="20" rx="8"/><path d="M590 ${y - 36} L584 ${y - 48} M614 ${y - 36} L620 ${y - 48}"/>`][d];
-    return `<g class="g1 dev"><rect x="560" y="${y - 70}" width="270" height="${176}" rx="26" fill="#fff6f1" stroke="${N}" stroke-width="5"/><g fill="#dfe4fb" stroke="${N}" stroke-width="4" stroke-linecap="round">${icon}</g><text x="640" y="${y - 24}" font-family="JetBrains Mono" font-weight="700" font-size="15" fill="#4a6ce7" letter-spacing="2">DISPOSITIVO ${d + 1}</text><g class="g2">${ports}</g></g>`;
+    return `<g class="g1 dev" data-cy="${y + 18}"><rect x="560" y="${y - 70}" width="270" height="${176}" rx="26" fill="#fff6f1" stroke="${N}" stroke-width="5"/><g fill="#dfe4fb" stroke="${N}" stroke-width="4" stroke-linecap="round">${icon}</g><text x="640" y="${y - 24}" font-family="JetBrains Mono" font-weight="700" font-size="15" fill="#4a6ce7" letter-spacing="2">DISPOSITIVO ${d + 1}</text><g class="g2">${ports}</g></g>`;
   }).join('');
   const lines = ys.map((y, i) => `<path class="g1 probe" d="M176 306 C 320 306, 400 ${y}, 556 ${y + 18}" fill="none" stroke="${N}" stroke-width="4" stroke-dasharray="8 10" stroke-linecap="round"/>`).join('');
   return `<svg class="nmap-svg" viewBox="0 0 878 612" aria-hidden="true">
-    <g class="g4"><rect x="540" y="40" width="310" height="540" rx="40" fill="none" stroke="#4a6ce7" stroke-width="5" stroke-dasharray="14 12"/><rect x="560" y="14" width="270" height="40" rx="20" fill="#ffd54a" stroke="${N}" stroke-width="4"/><text x="695" y="41" text-anchor="middle" font-family="Space Grotesk" font-weight="700" font-size="18" fill="${N}" letter-spacing="1.5">SUPERFICIE DE ATAQUE</text></g>
+    <g class="g4"><rect class="surf" x="540" y="40" width="310" height="540" rx="40" fill="none" stroke="#4a6ce7" stroke-width="5" stroke-dasharray="14 12"/><g class="surf-l"><rect x="560" y="14" width="270" height="40" rx="20" fill="#ffd54a" stroke="${N}" stroke-width="4"/><text x="695" y="41" text-anchor="middle" font-family="Space Grotesk" font-weight="700" font-size="18" fill="${N}" letter-spacing="1.5">SUPERFICIE DE ATAQUE</text></g></g>
     ${lines}
     <g class="ping"><circle cx="110" cy="306" r="64" fill="none" stroke="#4a6ce7" stroke-width="4"/><circle cx="110" cy="306" r="64" fill="none" stroke="#4a6ce7" stroke-width="4"/></g>
     <g class="scanner"><circle cx="110" cy="306" r="66" fill="${N}"/><text x="110" y="316" text-anchor="middle" font-family="Space Grotesk" font-weight="700" font-size="30" fill="#fff6f1">Nmap</text></g>
     ${dev}
+    ${ys.map(() => `<circle class="pk" r="10" fill="#ffd54a" stroke="${N}" stroke-width="4" opacity="0"/>`).join('')}
     <g class="g3 legend"><rect x="40" y="540" width="30" height="30" rx="10" fill="#ffd54a" stroke="${N}" stroke-width="4"/><text x="82" y="562" font-family="Space Grotesk" font-weight="700" font-size="20" fill="${N}">servicio activo</text><rect x="260" y="540" width="30" height="30" rx="10" fill="#fff6f1" stroke="#93a4ec" stroke-width="4"/><text x="302" y="562" font-family="Space Grotesk" font-weight="500" font-size="20" fill="#4a6ce7">cerrado</text></g>
   </svg>`;
 }

@@ -2,6 +2,7 @@ import gsap from 'gsap';
 import { defineSlide, PI } from '../engine.js';
 import { maskTitle, flipMove } from './util.js';
 import { PHASES } from './phases.js';
+import { feedback } from './dnd.js';
 
 const SHUFFLED = [3, 5, 1, 4, 2]; // orden inicial desordenado (números de fase)
 const S = 'fill="none" stroke="#1a2352" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"';
@@ -41,6 +42,7 @@ function build(s) {
         cards().forEach((c, i) => { mark(c, i); }); status('Orden correcto de un pentest: de la información al informe.'); return;
       }
       cards().forEach(mark);
+      feedback(cards().filter(c => c.classList.contains('ok')), cards().filter(c => c.classList.contains('bad')));
       status(right === 5 ? '¡Orden perfecto!' : `Acertaron ${right} de 5 posiciones. Observen cómo se acomodan…`);
       calls.push(gsap.delayedCall(1.6, () => {
         flipMove(cards(), () => { cards().sort((x, y) => x.dataset.n - y.dataset.n).forEach(c => row.appendChild(c)); }, { duration: 0.8 });

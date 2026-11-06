@@ -50,6 +50,7 @@ function activate(i, { instant, delay }) {
   $('#tag').textContent = s.dataset.tag || '';
   $('#bandtxt').textContent = s.dataset.band || '';
   $('#count').textContent = pad(i + 1) + ' / ' + pad(slides.length);
+  gsap.to('#deckbar', { scaleX: (i + 1) / slides.length, duration: instant || !PI.fx ? 0 : 0.8, ease: 'power3.inOut', delay: instant ? 0 : delay, overwrite: 'auto' });
   const anims = $$('[data-anim]', s), steps = $$('[data-step]', s);
   gsap.set(steps, { autoAlpha: 0 });
   const api = { slide: s, gsap, fx: PI.fx, animate: !instant && PI.fx, delay, step, own: t => { own.push(t); return t; } };
