@@ -15,7 +15,7 @@ function loops(s, { gsap, fx, own }) {
   s.querySelectorAll('[data-needle]').forEach(e => { gsap.set(e, { rotation: -80, svgOrigin: '324 285' }); own(gsap.to(e, { rotation: 80, duration: 2.4, ease: 'sine.inOut', yoyo: true, repeat: -1, svgOrigin: '324 285' })); });
 }
 const info = api => s => { maskTitle(s, api, 0.1); loops(s, api); };
-['set1', 'set2', 'set3', 'set4', 'esc1', 'esc2', 'esc3', 'esc4', 'esc5', 'esc6', 'esc7'].forEach(id => defineSlide(id, { enter(s, api) { info(api)(s); } }));
+['set1', 'set2', 'set3', 'set4', 'esc1', 'esc2', 'esc3', 'esc4', 'esc5', 'esc6', 'esc7', 'c3'].forEach(id => defineSlide(id, { enter(s, api) { info(api)(s); } }));
 
 // --- sorters (A5, A8)
 const sorter = (id, order) => defineSlide(id, {
@@ -27,6 +27,7 @@ const sorter = (id, order) => defineSlide(id, {
   }
 });
 sorter('a5', ['tray', 'phish', 'legit']);
+sorter('a11', ['tray', 'z1', 'z2', 'z3', 'z4', 'z5']);
 sorter('a8', ['tray', 'nessus', 'openvas', 'zap', 'nikto']);
 
 // --- A6 detective del correo
@@ -92,4 +93,30 @@ defineSlide('a9', {
       rows.forEach(r => { const b = r.querySelector('.fb'), pick = TOOLS[+b.dataset.v], ok = r.dataset.ok === pick; r.classList.add(ok ? 'ok' : 'no'); r.querySelector('.fv').textContent = ok ? '✓ ' + r.dataset.ok : '✗ Era: ' + r.dataset.ok; });
     } else if (n < 1 && from >= 1) { s.classList.remove('revd'); rows.forEach(r => { r.classList.remove('ok', 'no'); r.querySelector('.fv').textContent = ''; }); }
   }
+});
+
+['t1', 't2', 'ref', 'cierre'].forEach(id => defineSlide(id, { enter(s, api) { maskTitle(s, api, 0.1); } }));
+
+// --- A12 ruleta de preguntas de validación
+defineSlide('a12', {
+  enter(s, api) {
+    maskTitle(s, api, 0.1);
+    if (s._a12) return;
+    const { gsap } = api, wheel = s.querySelector('.wheel'), qs = [...s.querySelectorAll('.rq')], btn = s.querySelector('.rbtn'), rn = s.querySelector('.rn'), ans = s.querySelector('.ra p');
+    const N = 7, seg = 360 / N, st = { used: new Set(), rot: 0, cur: -1, busy: false };
+    const show = i => { qs.forEach(q => q.classList.toggle('on', i === -1 ? q.classList.contains('rq0') : +q.dataset.i === i && !q.classList.contains('rq0'))); rn.textContent = i < 0 ? '–' : i + 1; ans.textContent = ''; s.querySelector('.ra').classList.remove('open'); };
+    const showAns = on => { s.querySelector('.ra').classList.toggle('open', on); ans.textContent = on && st.cur >= 0 ? qs[st.cur].dataset.a : ''; };
+    const dim = () => s.querySelectorAll('.sg7').forEach(g => g.style.opacity = st.used.has(+g.dataset.i) ? 0.3 : 1);
+    btn.addEventListener('click', e => {
+      e.stopPropagation(); if (st.busy) return;
+      if (st.used.size === N) { st.used.clear(); st.cur = -1; show(-1); dim(); btn.textContent = 'GIRAR'; return; }
+      const free = [...Array(N).keys()].filter(i => !st.used.has(i)), i = free[Math.floor(Math.random() * free.length)];
+      st.busy = true; show(-1); st.cur = -1;
+      const target = st.rot + 360 * 4 + ((360 - (i + 0.5) * seg - (st.rot % 360)) % 360 + 360) % 360;
+      const done = () => { st.rot = target; st.used.add(i); st.cur = i; st.busy = false; show(i); dim(); btn.textContent = st.used.size === N ? 'REINICIAR' : 'GIRAR OTRA'; };
+      if (api.fx) gsap.to(wheel, { rotation: target, duration: 4, ease: 'power4.out', transformOrigin: '330px 330px', onComplete: done }); else { gsap.set(wheel, { rotation: target }); done(); }
+    });
+    s._a12 = { showAns, st };
+  },
+  step(s, n) { const m = s._a12; if (m) m.showAns(n >= 1); }
 });

@@ -2,9 +2,10 @@ import { defineSlide } from '../engine.js';
 import { maskTitle } from './util.js';
 import { PHASES } from './phases.js';
 
-const X = [200, 580, 960, 1340, 1720], Y = 541;
+const X = [200, 580, 960, 1340, 1720];
 
 function paint(s, n, { gsap, fx, instant }) {
+  const Y = parseFloat(s.querySelector('.track').style.top) + 5;
   const quick = instant || !fx, pk = s.querySelector('.pkt');
   s.querySelectorAll('.nd').forEach(nd => {
     const i = +nd.dataset.i, st = i < n ? 'done' : i === n ? 'on' : 'idle';
@@ -26,10 +27,10 @@ function paint(s, n, { gsap, fx, instant }) {
   else gsap.timeline().to(els, { y: -12, autoAlpha: 0, duration: 0.14 }).add(set).fromTo(els, { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.3, stagger: 0.05, ease: 'power3.out' });
 }
 
-defineSlide('r3', {
+['r3', 'f1'].forEach(id => defineSlide(id, {
   enter(s, api) {
     maskTitle(s, api, 0.1);
     if (api.step === 0) { paint(s, 0, { gsap: api.gsap, fx: api.fx, instant: true }); if (api.animate) api.own(api.gsap.from(s.querySelectorAll('.nd,.nl'), { y: 24, autoAlpha: 0, duration: 0.5, ease: 'back.out(1.6)', stagger: 0.07, delay: api.delay + 0.4 })); }
   },
   step(s, n, from, api) { paint(s, n, { gsap: api.gsap, fx: api.fx, instant: api.instant === true }); }
-});
+}));

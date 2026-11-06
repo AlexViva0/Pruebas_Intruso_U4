@@ -16,7 +16,7 @@ function reveal(s, on, { gsap, fx, instant }) {
     }
   });
 }
-for (const id of [1, 2, 3, 4, 5].flatMap(i => ['quiz1-' + i, 'quiz2-' + i])) {
+for (const id of [1, 2, 3, 4, 5].flatMap(i => ['quiz1-' + i, 'quiz2-' + i]).concat([6, 7, 8].flatMap(i => ['quiz3-' + i])).concat([1, 2, 3, 4, 5].map(i => 'quiz3-' + i))) {
   defineSlide(id, {
     enter(s, api) {
       s.querySelectorAll('.qc').forEach(c => api.gsap.set(c, { autoAlpha: 0, scale: 0 }));
