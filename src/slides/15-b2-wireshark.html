@@ -1,0 +1,26 @@
+<section class="slide" data-id="b2-wireshark" data-title="Wireshark" data-tag="Bloque 2 · Herramientas" data-band="Bloque 2 · Herramientas de software" data-steps="3" data-notes="Wireshark es un analizador de protocolos de red que captura y muestra en detalle todo el tráfico que pasa por una interfaz de red.|Pulsa → : captura el tráfico (los paquetes empiezan a aparecer).|Pulsa → : permite filtrar y examinar paquetes (aquí, el filtro «http»).|Pulsa → : sirve para detectar comportamientos anómalos, credenciales viajando sin cifrar o intentos de conexión sospechosos. Los paquetes de la tabla son un ejemplo ilustrativo.">
+  <h1 class="abs title" style="left:108px;top:92px;font-size:82px"><span class="ln"><span>Wireshark</span></span></h1>
+  <div class="abs card def" data-anim="pop" data-delay=".1" style="left:112px;top:232px;width:1696px;height:130px">
+    <p>Analizador de protocolos de red: <mark>captura y muestra en detalle todo el tráfico</mark> que pasa por una interfaz de red.</p>
+  </div>
+  <div class="abs card ws" data-anim="pop" data-delay=".2" style="left:112px;top:392px;width:1100px;height:608px">
+    <div class="ws-f"><span class="mono ws-fk">Filtro:</span><span class="mono ws-ft"></span><i class="ws-c"></i><span class="mono ws-ex">ejemplo ilustrativo</span></div>
+    <div class="ws-h"><span>Origen</span><span>Destino</span><span>Protocolo</span><span>Información</span></div>
+    <div class="ws-b">
+      <div class="wr" data-p="DNS"><span>192.168.1.10</span><span>192.168.1.1</span><b>DNS</b><span>Consulta de nombre</span></div>
+      <div class="wr" data-p="TCP"><span>192.168.1.10</span><span>203.0.113.5</span><b>TCP</b><span>Inicio de conexión</span></div>
+      <div class="wr flag f1" data-p="HTTP"><span>192.168.1.10</span><span>203.0.113.5</span><b>HTTP</b><span>Inicio de sesión en texto plano</span><em>SIN CIFRAR</em></div>
+      <div class="wr" data-p="HTTP"><span>203.0.113.5</span><span>192.168.1.10</span><b>HTTP</b><span>Respuesta</span></div>
+      <div class="wr" data-p="TLS"><span>192.168.1.12</span><span>198.51.100.7</span><b>TLS</b><span>Datos cifrados</span></div>
+      <div class="wr flag f2" data-p="TCP"><span>192.168.1.20</span><span>192.168.1.1</span><b>TCP</b><span>Ráfaga de intentos de conexión</span><em>ANÓMALO</em></div>
+      <div class="wr" data-p="DNS"><span>192.168.1.10</span><span>192.168.1.1</span><b>DNS</b><span>Consulta de nombre</span></div>
+      <div class="wr flag f3" data-p="TCP"><span>198.51.100.99</span><span>192.168.1.1</span><b>TCP</b><span>Intento de conexión desconocido</span><em>SOSPECHOSO</em></div>
+      <div class="wr" data-p="TLS"><span>192.168.1.12</span><span>198.51.100.7</span><b>TLS</b><span>Datos cifrados</span></div>
+    </div>
+  </div>
+  <div class="abs wsc" style="left:1250px;top:392px;width:558px;height:608px">
+    <div class="card wc" data-step="1" data-fx="pop"><b class="wc-n">1</b><div><div class="wc-t">Captura</div><p>Todo el tráfico que pasa por una <b>interfaz de red</b>.</p></div></div>
+    <div class="card wc" data-step="2" data-fx="pop"><b class="wc-n">2</b><div><div class="wc-t">Filtra y examina</div><p>Permite <b>filtrar y examinar paquetes</b>.</p></div></div>
+    <div class="card wc" data-step="3" data-fx="pop"><b class="wc-n">3</b><div><div class="wc-t">Detecta</div><ul><li>Comportamientos <b>anómalos</b></li><li>Credenciales <b>sin cifrar</b></li><li>Intentos de conexión <b>sospechosos</b></li></ul></div></div>
+  </div>
+</section>

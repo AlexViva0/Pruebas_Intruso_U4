@@ -1,0 +1,21 @@
+<section class="slide" data-id="b2-nmap-cmd" data-title="Nmap: comandos básicos" data-tag="Bloque 2 · Herramientas" data-band="Bloque 2 · Herramientas de software" data-steps="7" data-notes="Ejemplos de comandos básicos de Nmap (uso educativo, solo sobre equipos propios o autorizados). 192.168.1.1 es la dirección del ejemplo de la investigación.|Pulsa → para ir mostrando un comando por paso: escaneo básico de un host; solo los puertos indicados; los 65535 puertos; versión de los servicios (-sV); sistema operativo (-O); escaneo agresivo (-A: SO + versiones + scripts); scripts NSE para vulnerabilidades (--script vuln).|El motor de scripts NSE (Nmap Scripting Engine) permite ejecutar scripts en Lua para tareas avanzadas de detección; complementa el escaneo básico con pruebas de vulnerabilidades conocidas.|La práctica A3 usa solo el escaneo básico y -sV, sobre tu propia máquina.">
+  <h1 class="abs title" style="left:108px;top:92px;font-size:76px"><span class="ln"><span>Nmap: comandos básicos</span></span></h1>
+  <div class="abs warn" data-anim="stamp" data-delay=".15" style="left:1210px;top:104px"><span class="mono">USO EDUCATIVO</span> solo sobre equipos propios o autorizados</div>
+  <div class="abs card term" data-anim="pop" data-delay=".1" style="left:112px;top:240px;width:1130px;height:760px">
+    <div class="term-h"><i></i><i></i><i></i><span class="mono">terminal</span></div>
+    <div class="cmdrow" data-step="1" data-fx="left" data-full="nmap 192.168.1.1"><div class="cmd"></div><div class="cdesc">Escaneo básico de un host</div></div>
+    <div class="cmdrow" data-step="2" data-fx="left" data-full="nmap -p 22,80,443 192.168.1.1"><div class="cmd"></div><div class="cdesc">Escanea solo los puertos indicados</div></div>
+    <div class="cmdrow" data-step="3" data-fx="left" data-full="nmap -p- 192.168.1.1"><div class="cmd"></div><div class="cdesc">Escanea los 65535 puertos</div></div>
+    <div class="cmdrow" data-step="4" data-fx="left" data-full="nmap -sV 192.168.1.1"><div class="cmd"></div><div class="cdesc">Detecta la versión de los servicios</div></div>
+    <div class="cmdrow" data-step="5" data-fx="left" data-full="nmap -O 192.168.1.1"><div class="cmd"></div><div class="cdesc">Intenta detectar el sistema operativo</div></div>
+    <div class="cmdrow" data-step="6" data-fx="left" data-full="nmap -A 192.168.1.1"><div class="cmd"></div><div class="cdesc">Escaneo agresivo (SO + versiones + scripts)</div></div>
+    <div class="cmdrow" data-step="7" data-fx="left" data-full="nmap --script vuln 192.168.1.1"><div class="cmd"></div><div class="cdesc">Ejecuta scripts NSE para detectar vulnerabilidades</div></div>
+  </div>
+  <div class="abs card nse" data-step="7" data-fx="pop" data-delay=".5" style="left:1290px;top:240px;width:518px;height:760px">
+    <div class="nse-k mono">NSE</div>
+    <div class="nse-t">Nmap Scripting Engine</div>
+    <p>Permite ejecutar <b>scripts en Lua</b> para tareas avanzadas de detección.</p>
+    <p>Complementa el escaneo básico con <b>pruebas de vulnerabilidades conocidas</b>.</p>
+    <div class="nse-c mono">--script vuln</div>
+  </div>
+</section>
